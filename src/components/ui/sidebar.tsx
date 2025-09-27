@@ -1,23 +1,122 @@
 "use client"
 
 import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
+import { 
+  Drawer, 
+  Box, 
+  Divider, 
+  Skeleton as MuiSkeleton,
+  Tooltip as MuiTooltip,
+  IconButton
+} from '@mui/material';
 import { PanelLeft } from "lucide-react"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
-import { Sheet, SheetContent } from "@/components/ui/sheet"
-import { Skeleton } from "@/components/ui/skeleton"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+
+// Custom Slot implementation - no external dependencies
+interface SlotProps extends React.HTMLAttributes<HTMLElement> {
+  children?: React.ReactNode;
+}
+
+const Slot = React.forwardRef<any, SlotProps>(({ children, ...props }, ref) => {
+  if (!React.isValidElement(children)) {
+    return null;
+  }
+  
+  return React.cloneElement(children, {
+    ...props,
+    ...children.props,
+    ref: ref,
+    className: [props.className, children.props.className].filter(Boolean).join(' '),
+  });
+});
+
+Slot.displayName = "Slot";
+
+// Material-UI based Tooltip wrapper
+const Tooltip = ({ children, content }: { children: React.ReactElement; content?: string }) => {
+  if (!content) return children;
+  
+  return (
+    <MuiTooltip title={content} placement="right">
+      {children}
+    </MuiTooltip>
+  );
+};
+
+const TooltipProvider = ({ children }: { children: React.ReactNode }) => <>{children}</>;
+const TooltipTrigger = ({ children }: { children: React.ReactNode }) => <>{children}</>;
+const TooltipContent = ({ children }: { children: React.ReactNode }) => <>{children}</>;
+
+// Material-UI based Separator
+const Separator = React.forwardRef<HTMLHRElement, React.HTMLAttributes<HTMLHRElement> & {
+  orientation?: "horizontal" | "vertical";
+}>(({ className, orientation = "horizontal", ...props }, ref) => (
+  <Divider 
+    orientation={orientation}
+    className={cn("shrink-0 bg-border", className)}
+  />
+));
+Separator.displayName = "Separator";
+
+// Material-UI based Sheet components
+const Sheet = ({ children, open, onOpenChange }: { 
+  children: React.ReactNode; 
+  open: boolean; 
+  onOpenChange: (open: boolean) => void; 
+}) => <>{children}</>;
+
+const SheetContent = React.forwardRef<HTMLDivElement, {
+  children: React.ReactNode;
+  side?: "left" | "right" | "top" | "bottom";
+  className?: string;
+  style?: React.CSSProperties;
+  [key: string]: any;
+}>(({ children, side = "left", className, style, ...props }, ref) => (
+  <Drawer
+    anchor={side}
+    open={props["data-mobile"] === "true" ? true : false}
+    onClose={() => {}}
+    variant="temporary"
+    sx={{
+      display: { xs: "block", md: "none" },
+      "& .MuiDrawer-paper": {
+        boxSizing: "border-box",
+        width: style?.["--sidebar-width"] || "18rem",
+      },
+    }}
+  >
+    <Box 
+      ref={ref} 
+      className={className} 
+      style={style}
+      sx={{ width: "100%", height: "100%" }}
+    >
+      {children}
+    </Box>
+  </Drawer>
+));
+SheetContent.displayName = "SheetContent";
+
+// Material-UI based Skeleton
+const Skeleton = React.forwardRef<HTMLDivElement, {
+  className?: string;
+  style?: React.CSSProperties;
+  [key: string]: any;
+}>(({ className, style, ...props }, ref) => (
+  <MuiSkeleton 
+    ref={ref}
+    className={className}
+    style={style}
+    variant="rectangular"
+    {...props}
+  />
+));
+Skeleton.displayName = "Skeleton";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -131,7 +230,7 @@ const SidebarProvider = React.forwardRef<
 
     return (
       <SidebarContext.Provider value={contextValue}>
-        <TooltipProvider delayDuration={0}>
+        <TooltipProvider>
           <div
             style={
               {
@@ -571,23 +670,17 @@ const SidebarMenuButton = React.forwardRef<
       return button
     }
 
-    if (typeof tooltip === "string") {
-      tooltip = {
-        children: tooltip,
-      }
+    const tooltipContent = typeof tooltip === "string" ? tooltip : (tooltip?.children as string);
+
+    if (state === "collapsed" && !isMobile && tooltipContent) {
+      return (
+        <Tooltip content={tooltipContent}>
+          {button}
+        </Tooltip>
+      );
     }
 
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>{button}</TooltipTrigger>
-        <TooltipContent
-          side="right"
-          align="center"
-          hidden={state !== "collapsed" || isMobile}
-          {...tooltip}
-        />
-      </Tooltip>
-    )
+    return button;
   }
 )
 SidebarMenuButton.displayName = "SidebarMenuButton"

@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
-import { Slot } from "@radix-ui/react-slot"
+import { FormHelperText } from '@mui/material';
 import {
   Controller,
   FormProvider,
@@ -14,6 +13,26 @@ import {
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
+
+// Custom Slot implementation
+interface SlotProps extends React.HTMLAttributes<HTMLElement> {
+  children?: React.ReactNode;
+}
+
+const Slot = React.forwardRef<any, SlotProps>(({ children, ...props }, ref) => {
+  if (!React.isValidElement(children)) {
+    return null;
+  }
+  
+  return React.cloneElement(children, {
+    ...props,
+    ...children.props,
+    ref: ref,
+    className: [props.className, children.props.className].filter(Boolean).join(' '),
+  });
+});
+
+Slot.displayName = "Slot";
 
 const Form = FormProvider
 
@@ -87,8 +106,8 @@ const FormItem = React.forwardRef<
 FormItem.displayName = "FormItem"
 
 const FormLabel = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+  HTMLLabelElement,
+  React.LabelHTMLAttributes<HTMLLabelElement>
 >(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField()
 
@@ -154,14 +173,15 @@ const FormMessage = React.forwardRef<
   }
 
   return (
-    <p
+    <FormHelperText
       ref={ref}
       id={formMessageId}
       className={cn("text-sm font-medium text-destructive", className)}
+      error={!!error}
       {...props}
     >
       {body}
-    </p>
+    </FormHelperText>
   )
 })
 FormMessage.displayName = "FormMessage"

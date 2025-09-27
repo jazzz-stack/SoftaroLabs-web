@@ -14,7 +14,6 @@ import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { SoftaroLogo } from '../icons';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -62,9 +61,12 @@ export function Header() {
       <Link
         to="/"
         className="mb-8 flex items-center space-x-2"
-        onClick={() => setMobileOpen(false)}
-      >
-        <SoftaroLogo className="h-6 w-6 text-primary" />
+        onClick={() => setMobileOpen(false)}>
+        <img
+          src="/assets/image/logo.png"
+          alt="Softaro Labs Logo"
+          className="h-6 w-6"
+        />
         <span className="font-bold font-headline">Softaro Labs</span>
       </Link>
       <List>
@@ -75,21 +77,35 @@ export function Header() {
               to={link.href}
               onClick={() => setMobileOpen(false)}
               sx={{
-                borderRadius: 1,
+                borderRadius: 2,
                 mb: 1,
-                '&:hover': {
-                  backgroundColor: 'primary.light',
-                  color: 'primary.contrastText',
+                position: 'relative',
+                "&:hover": {
+                  backgroundColor: "rgba(71, 135, 255, 0.1)",
+                  color: "#4787FF",
+                  transform: 'translateX(4px)',
+                  transition: 'all 0.2s ease-in-out',
                 },
                 ...(location.pathname === link.href && {
-                  backgroundColor: 'primary.main',
-                  color: 'primary.contrastText',
-                  '&:hover': {
-                    backgroundColor: 'primary.dark',
+                  backgroundColor: "rgba(71, 135, 255, 0.15)",
+                  color: "#4787FF",
+                  fontWeight: 600,
+                  "&::before": {
+                    content: '""',
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: 4,
+                    backgroundColor: "#4787FF",
+                    borderRadius: "0 4px 4px 0",
+                  },
+                  "&:hover": {
+                    backgroundColor: "rgba(71, 135, 255, 0.2)",
+                    color: "#4787FF",
                   },
                 }),
-              }}
-            >
+              }}>
               <ListItemText primary={link.label} />
             </ListItemButton>
           </ListItem>
@@ -102,10 +118,14 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
         <div className="mr-4 hidden md:flex">
-          <Link to="/" className="mr-6 flex items-center space-x-2">
-            <SoftaroLogo className="h-6 w-6 text-primary" />
+          <Link to="/" className="ml-8  flex items-center pr-4 space-x-2">
+            <img
+              src="/assets/image/logo.png"
+              alt="Softaro Labs Logo"
+              className="h-6 w-6"
+            />
             <span className="hidden font-bold sm:inline-block font-headline">
-              Softaro Labs
+              SoftaroLabs
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
@@ -119,10 +139,10 @@ export function Header() {
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ 
-            display: { md: 'none' },
-          }}
-        >
+          sx={{
+            display: { md: "none" },
+            ml: 1,
+          }}>
           <Menu />
         </IconButton>
         <Drawer
@@ -134,13 +154,12 @@ export function Header() {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: 'block', md: 'none' },
-            '& .MuiDrawer-paper': { 
-              boxSizing: 'border-box', 
-              width: 300 
+            display: { xs: "block", md: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: 300,
             },
-          }}
-        >
+          }}>
           {drawer}
         </Drawer>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
