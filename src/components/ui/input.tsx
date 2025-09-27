@@ -1,22 +1,49 @@
-import * as React from "react"
+'use client';
 
-import { cn } from "@/lib/utils"
+import React from 'react';
+import { TextField, TextFieldProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Input.displayName = "Input"
+const StyledTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: theme.palette.background.paper,
+    '& fieldset': {
+      borderColor: theme.palette.grey[300],
+    },
+    '&:hover fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+  },
+  '& .MuiInputLabel-root': {
+    color: theme.palette.text.secondary,
+    '&.Mui-focused': {
+      color: theme.palette.primary.main,
+    },
+  },
+}));
 
-export { Input }
+interface InputProps extends Omit<TextFieldProps, 'variant'> {
+  type?: string;
+  placeholder?: string;
+}
+
+export const Input: React.FC<InputProps> = ({
+  type = 'text',
+  placeholder,
+  ...props
+}) => {
+  return (
+    <StyledTextField
+      type={type}
+      placeholder={placeholder}
+      variant="outlined"
+      fullWidth
+      size="medium"
+      {...props}
+    />
+  );
+};

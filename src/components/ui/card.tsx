@@ -1,79 +1,99 @@
-import * as React from "react"
+'use client';
 
-import { cn } from "@/lib/utils"
+import React from 'react';
+import {
+  Card as MuiCard,
+  CardContent as MuiCardContent,
+  CardHeader as MuiCardHeader,
+  CardActions as MuiCardActions,
+  Typography,
+  CardProps as MuiCardProps,
+  CardContentProps as MuiCardContentProps,
+  CardHeaderProps as MuiCardHeaderProps,
+  CardActionsProps as MuiCardActionsProps,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
-      className
-    )}
-    {...props}
-  />
-))
-Card.displayName = "Card"
+// Custom styled card
+const StyledCard = styled(MuiCard)(({ theme }) => ({
+  borderRadius: theme.shape.borderRadius,
+  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+  transition: 'box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out',
+  '&:hover': {
+    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+    transform: 'translateY(-1px)',
+  },
+}));
 
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
-    {...props}
-  />
-))
-CardHeader.displayName = "CardHeader"
+interface CardProps extends MuiCardProps {
+  children: React.ReactNode;
+}
 
-const CardTitle = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
-      className
-    )}
-    {...props}
-  />
-))
-CardTitle.displayName = "CardTitle"
+export const Card: React.FC<CardProps> = ({ children, ...props }) => {
+  return (
+    <StyledCard {...props}>
+      {children}
+    </StyledCard>
+  );
+};
 
-const CardDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-CardDescription.displayName = "CardDescription"
+interface CardHeaderProps extends MuiCardHeaderProps {
+  children?: React.ReactNode;
+}
 
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
-CardContent.displayName = "CardContent"
+export const CardHeader: React.FC<CardHeaderProps> = ({ children, ...props }) => {
+  return (
+    <MuiCardHeader {...props}>
+      {children}
+    </MuiCardHeader>
+  );
+};
 
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
-    {...props}
-  />
-))
-CardFooter.displayName = "CardFooter"
+interface CardTitleProps {
+  children: React.ReactNode;
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+}
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export const CardTitle: React.FC<CardTitleProps> = ({ children, variant = 'h5' }) => {
+  return (
+    <Typography variant={variant} component="h2" gutterBottom>
+      {children}
+    </Typography>
+  );
+};
+
+interface CardDescriptionProps {
+  children: React.ReactNode;
+}
+
+export const CardDescription: React.FC<CardDescriptionProps> = ({ children }) => {
+  return (
+    <Typography variant="body2" color="text.secondary">
+      {children}
+    </Typography>
+  );
+};
+
+interface CardContentProps extends MuiCardContentProps {
+  children: React.ReactNode;
+}
+
+export const CardContent: React.FC<CardContentProps> = ({ children, ...props }) => {
+  return (
+    <MuiCardContent {...props}>
+      {children}
+    </MuiCardContent>
+  );
+};
+
+interface CardFooterProps extends MuiCardActionsProps {
+  children: React.ReactNode;
+}
+
+export const CardFooter: React.FC<CardFooterProps> = ({ children, ...props }) => {
+  return (
+    <MuiCardActions {...props}>
+      {children}
+    </MuiCardActions>
+  );
+};

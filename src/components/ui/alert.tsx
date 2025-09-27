@@ -1,59 +1,42 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+'use client';
 
-import { cn } from "@/lib/utils"
+import React from 'react';
+import { Alert as MuiAlert, AlertTitle as MuiAlertTitle, AlertProps as MuiAlertProps } from '@mui/material';
+import { CheckCircle, Info, Warning, Error } from '@mui/icons-material';
 
-const alertVariants = cva(
-  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
-  {
-    variants: {
-      variant: {
-        default: "bg-background text-foreground",
-        destructive:
-          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-)
+interface AlertProps extends MuiAlertProps {
+  children: React.ReactNode;
+}
 
-const Alert = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
->(({ className, variant, ...props }, ref) => (
-  <div
-    ref={ref}
-    role="alert"
-    className={cn(alertVariants({ variant }), className)}
-    {...props}
-  />
-))
-Alert.displayName = "Alert"
+export const Alert: React.FC<AlertProps> = ({ children, severity = 'info', ...props }) => {
+  return (
+    <MuiAlert
+      severity={severity}
+      iconMapping={{
+        success: <CheckCircle />,
+        info: <Info />,
+        warning: <Warning />,
+        error: <Error />,
+      }}
+      {...props}
+    >
+      {children}
+    </MuiAlert>
+  );
+};
 
-const AlertTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h5
-    ref={ref}
-    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
-    {...props}
-  />
-))
-AlertTitle.displayName = "AlertTitle"
+interface AlertTitleProps {
+  children: React.ReactNode;
+}
 
-const AlertDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-sm [&_p]:leading-relaxed", className)}
-    {...props}
-  />
-))
-AlertDescription.displayName = "AlertDescription"
+export const AlertTitle: React.FC<AlertTitleProps> = ({ children }) => {
+  return <MuiAlertTitle>{children}</MuiAlertTitle>;
+};
 
-export { Alert, AlertTitle, AlertDescription }
+interface AlertDescriptionProps {
+  children: React.ReactNode;
+}
+
+export const AlertDescription: React.FC<AlertDescriptionProps> = ({ children }) => {
+  return <div>{children}</div>;
+};
