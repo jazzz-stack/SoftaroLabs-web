@@ -3,7 +3,6 @@
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 const theme = createTheme({
   cssVariables: true,
@@ -40,11 +39,9 @@ interface MaterialUIThemeProviderProps {
 
 export function MaterialUIThemeProvider({ children }: MaterialUIThemeProviderProps) {
   return (
-    <AppRouterCacheProvider options={{ key: 'mui', enableCssLayer: true }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline enableColorScheme />
-        {children}
-      </ThemeProvider>
-    </AppRouterCacheProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme />
+      {children}
+    </ThemeProvider>
   );
 }

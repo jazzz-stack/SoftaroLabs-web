@@ -6,24 +6,56 @@ export const services: Service[] = [
     description: 'Crafting responsive, high-performance websites and web applications.',
     longDescription: 'We build robust and scalable web solutions using modern technologies like React, Next.js, and Node.js. From corporate websites to complex e-commerce platforms, we deliver exceptional digital experiences tailored to your business goals. Our focus on clean code and performance optimization ensures your site is fast, reliable, and easy to maintain.',
     imageId: 'service-web-dev',
+    features: [
+      'Custom web application development',
+      'Responsive design and mobile optimization',
+      'E-commerce platform development',
+      'Content Management Systems (CMS)',
+      'Performance optimization and SEO',
+      'Ongoing maintenance and support'
+    ],
   },
   {
     title: 'Mobile App Development',
     description: 'Building intuitive and engaging mobile apps for iOS and Android.',
     longDescription: 'Our team develops native and cross-platform mobile applications that provide a seamless user experience. We handle the entire lifecycle, from ideation and design to development, testing, and deployment on the App Store and Google Play. We specialize in creating apps that are not only beautiful but also functional and user-friendly.',
     imageId: 'service-mobile-app',
+    features: [
+      'Native iOS and Android development',
+      'Cross-platform solutions with React Native',
+      'App Store and Google Play deployment',
+      'User experience optimization',
+      'Push notifications and offline functionality',
+      'App analytics and performance monitoring'
+    ],
   },
   {
     title: 'UI/UX Design',
     description: 'Designing user-centric interfaces that are both beautiful and functional.',
     longDescription: 'Good design is at the heart of every great product. Our UI/UX design process focuses on understanding your users to create intuitive, accessible, and delightful interfaces. We conduct user research, create wireframes and prototypes, and perform usability testing to ensure the final product meets and exceeds user expectations.',
     imageId: 'service-ui-ux',
+    features: [
+      'User research and persona development',
+      'Wireframing and prototyping',
+      'Visual design and branding',
+      'Usability testing and optimization',
+      'Accessibility compliance (WCAG)',
+      'Design system creation and maintenance'
+    ],
   },
   {
     title: 'Cloud Solutions',
     description: 'Leveraging the power of the cloud for scalable and reliable infrastructure.',
     longDescription: 'We help you harness the full potential of cloud computing with providers like AWS, Google Cloud, and Azure. Our services include cloud migration, infrastructure as code, serverless architecture, and CI/CD pipeline implementation. We ensure your application is secure, scalable, and cost-effective.',
     imageId: 'service-cloud',
+    features: [
+      'Cloud architecture design and implementation',
+      'Migration from on-premises to cloud',
+      'Serverless application development',
+      'DevOps and CI/CD pipeline setup',
+      'Security and compliance management',
+      'Cost optimization and monitoring'
+    ],
   },
 ];
 

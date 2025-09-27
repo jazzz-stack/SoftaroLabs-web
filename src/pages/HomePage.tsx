@@ -1,10 +1,10 @@
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { services, projects } from '@/lib/data';
 import { ArrowRight, Code, Cloud, Smartphone, Brush } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 
 const serviceIcons: { [key: string]: React.ReactNode } = {
   'Web Development': <Code className="h-8 w-8 text-primary" />,
@@ -13,7 +13,7 @@ const serviceIcons: { [key: string]: React.ReactNode } = {
   'Cloud Solutions': <Cloud className="h-8 w-8 text-primary" />,
 };
 
-export default function Home() {
+export default function HomePage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
   return (
@@ -21,13 +21,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] w-full">
         {heroImage && (
-          <Image
+          <img
             src={heroImage.imageUrl}
             alt={heroImage.description}
             data-ai-hint={heroImage.imageHint}
-            fill
-            className="object-cover"
-            priority
+            className="absolute inset-0 w-full h-full object-cover"
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-background to-black/60"></div>
@@ -38,11 +36,11 @@ export default function Home() {
           <p className="mt-4 max-w-2xl text-lg text-primary-foreground/90">
             At Softaro Labs, we build custom software to elevate your business.
           </p>
-          <Button asChild size="lg" className="mt-8">
-            <Link href="/contact">
+          <Link to="/contact">
+            <Button size="lg" className="mt-8">
               Get in Touch <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -71,9 +69,9 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Button asChild variant="outline">
-              <Link href="/services">View All Services</Link>
-            </Button>
+            <Link to="/services">
+              <Button variant="outline">View All Services</Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -94,12 +92,11 @@ export default function Home() {
                 <Card key={project.id} className="overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                   {projectImage && (
                     <div className="aspect-video relative w-full">
-                      <Image
+                      <img
                         src={projectImage.imageUrl}
                         alt={project.name}
                         data-ai-hint={projectImage.imageHint}
-                        fill
-                        className="object-cover"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                   )}
@@ -114,9 +111,9 @@ export default function Home() {
             })}
           </div>
           <div className="mt-12 text-center">
-            <Button asChild>
-              <Link href="/portfolio">Explore Portfolio</Link>
-            </Button>
+            <Link to="/portfolio">
+              <Button>Explore Portfolio</Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -130,9 +127,9 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
             Let's build something amazing together. Contact us today for a free consultation.
           </p>
-          <Button asChild size="lg" className="mt-8">
-            <Link href="/contact">Request a Quote</Link>
-          </Button>
+          <Link to="/contact">
+            <Button size="lg" className="mt-8">Request a Quote</Button>
+          </Link>
         </div>
       </section>
     </div>

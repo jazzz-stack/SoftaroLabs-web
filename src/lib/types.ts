@@ -3,6 +3,7 @@ export interface Service {
   description: string;
   longDescription: string;
   imageId: string;
+  features: string[];
 }
 
 export interface Project {
