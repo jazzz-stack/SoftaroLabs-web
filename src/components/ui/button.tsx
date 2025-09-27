@@ -37,7 +37,7 @@ const StyledButton = styled(MuiButton)(({ theme, variant }) => ({
   }),
 }));
 
-interface ButtonProps extends Omit<MuiButtonProps, 'variant'> {
+interface ButtonProps extends Omit<MuiButtonProps, 'variant' | 'size'> {
   variant?: 'contained' | 'outlined' | 'text' | 'default' | 'destructive' | 'ghost' | 'link' | 'secondary';
   size?: 'small' | 'medium' | 'large' | 'sm' | 'lg' | 'default' | 'icon';
   asChild?: boolean; // Legacy prop from Radix UI - ignored in Material UI

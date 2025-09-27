@@ -47,11 +47,11 @@ export default function PortfolioPage() {
                     </div>
                   </CardContent>
                   <CardFooter className="flex gap-2">
-                    <Button size="sm" variant="outline" className="flex-1">
+                    <Button size="sm" variant="outlined" className="flex-1">
                       <ExternalLink className="h-4 w-4 mr-2" />
                       View Project
                     </Button>
-                    <Button size="sm" variant="outline">
+                    <Button size="sm" variant="outlined">
                       <Github className="h-4 w-4" />
                     </Button>
                   </CardFooter>

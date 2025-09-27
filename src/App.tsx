@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { MaterialUIThemeProvider } from './components/providers/MaterialUIProvider'
+import { CorporateThemeProvider } from './components/providers/ThemeProvider'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 
@@ -15,7 +15,7 @@ import ContactPage from './pages/ContactPage'
 
 function App() {
   return (
-    <MaterialUIThemeProvider>
+    <CorporateThemeProvider>
       <Router>
         <div className="flex min-h-screen flex-col">
           <Header />
@@ -33,7 +33,7 @@ function App() {
           <Footer />
         </div>
       </Router>
-    </MaterialUIThemeProvider>
+    </CorporateThemeProvider>
   )
 }
 
