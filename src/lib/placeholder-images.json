@@ -101,6 +101,48 @@
       "description": "A group of developers pair programming",
       "imageUrl": "https://images.unsplash.com/photo-1669023414180-4dcf35d943e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwYWlyJTIwcHJvZ3JhbW1pbmd8ZW58MHx8fHwxNzU4OTc1MzgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "pair programming"
+    },
+    {
+      "id": "feature-performance",
+      "description": "Lightning bolt with speed lines representing fast performance",
+      "imageUrl": "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaWdodG5pbmclMjBzcGVlZHxlbnwwfHx8fDE3NTg5MjA5NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lightning speed performance"
+    },
+    {
+      "id": "feature-security",
+      "description": "Digital security shield with lock icons representing cybersecurity",
+      "imageUrl": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5JTIwc2hpZWxkfGVufDB8fHx8MTc1ODkyMDk2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cybersecurity shield"
+    },
+    {
+      "id": "feature-scalability",
+      "description": "Growing network connections and nodes representing scalable infrastructure",
+      "imageUrl": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuZXR3b3JrJTIwc2NhbGFiaWxpdHl8ZW58MHx8fHwxNzU4OTIwOTY1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "scalable network infrastructure"
+    },
+    {
+      "id": "service-web-development-bg",
+      "description": "Modern coding environment with multiple screens showing web development",
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NTg5MjA5NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "web development workspace"
+    },
+    {
+      "id": "service-mobile-app-bg",
+      "description": "Mobile devices showing various app interfaces and UI designs",
+      "imageUrl": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NTg5MjA5NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mobile app development"
+    },
+    {
+      "id": "service-ui-ux-bg",
+      "description": "Designer working on wireframes and user interface mockups",
+      "imageUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx1aSUyMHV4JTIwZGVzaWdufGVufDB8fHx8MTc1ODkyMDk2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ui ux design process"
+    },
+    {
+      "id": "service-cloud-solutions-bg",
+      "description": "Cloud infrastructure visualization with servers and data connections",
+      "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMGluZnJhc3RydWN0dXJlfGVufDB8fHx8MTc1ODkyMDk2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cloud infrastructure"
     }
   ]
 }
