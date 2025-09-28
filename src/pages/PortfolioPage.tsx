@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
-import { projects } from '@/lib/data';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { 
-  ExternalLink, 
-  Github, 
+import React, { useState } from "react";
+import { projects } from "@/lib/data";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  ExternalLink,
+  Github,
   Eye,
   Star,
   Users,
@@ -17,48 +24,70 @@ import {
   Grid3X3,
   List,
   MessageSquare,
-  ArrowRight
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
+  ArrowRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-const categories = ['All', 'Web Development', 'Mobile App', 'UI/UX Design', 'Cloud Solutions'];
+const categories = [
+  "All",
+  "Web Development",
+  "Mobile App",
+  "UI/UX Design",
+  "Cloud Solutions",
+];
 
 const stats = [
-  { icon: <Award className="h-8 w-8" />, value: '100+', label: 'Projects Completed' },
-  { icon: <Users className="h-8 w-8" />, value: '50+', label: 'Happy Clients' },
-  { icon: <Star className="h-8 w-8" />, value: '5.0', label: 'Average Rating' },
-  { icon: <TrendingUp className="h-8 w-8" />, value: '95%', label: 'Success Rate' },
+  {
+    icon: <Award className="h-8 w-8" />,
+    value: "100+",
+    label: "Projects Completed",
+  },
+  { icon: <Users className="h-8 w-8" />, value: "50+", label: "Happy Clients" },
+  { icon: <Star className="h-8 w-8" />, value: "5.0", label: "Average Rating" },
+  {
+    icon: <TrendingUp className="h-8 w-8" />,
+    value: "95%",
+    label: "Success Rate",
+  },
 ];
 
 const featuredProjects = [
   {
-    id: 'featured-1',
-    name: 'Enterprise Dashboard',
-    description: 'A comprehensive analytics dashboard for Fortune 500 company',
-    impact: '300% increase in operational efficiency',
-    category: 'Web Development',
-    featured: true
+    id: "featured-1",
+    name: "Enterprise Dashboard",
+    description: "A comprehensive analytics dashboard for Fortune 500 company",
+    impact: "300% increase in operational efficiency",
+    category: "Web Development",
+    featured: true,
   },
   {
-    id: 'featured-2', 
-    name: 'Mobile Banking App',
-    description: 'Secure and intuitive banking application with biometric authentication',
-    impact: '2M+ active users worldwide',
-    category: 'Mobile App',
-    featured: true
-  }
+    id: "featured-2",
+    name: "Mobile Banking App",
+    description:
+      "Secure and intuitive banking application with biometric authentication",
+    impact: "2M+ active users worldwide",
+    category: "Mobile App",
+    featured: true,
+  },
 ];
 
 export default function PortfolioPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
-  
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.tags.some(tag => 
-        tag.toLowerCase().includes(selectedCategory.toLowerCase().replace(' ', ''))
-      ));
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'list'
+  const heroImage = PlaceHolderImages.find(
+    (img) => img.id === "hero-background"
+  );
+
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) =>
+          project.tags.some((tag) =>
+            tag
+              .toLowerCase()
+              .includes(selectedCategory.toLowerCase().replace(" ", ""))
+          )
+        );
 
   return (
     <div className="flex flex-col">
@@ -74,21 +103,25 @@ export default function PortfolioPage() {
         )}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent"></div>
-        
+
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             <Award className="mr-2 h-4 w-4" />
             Our Work Portfolio
           </Badge>
-          
+
           <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Our
-            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent"> Portfolio</span>
+            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+              {" "}
+              Portfolio
+            </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">
-            Discover the innovative solutions we've built for our clients across various industries. 
-            Each project represents our commitment to excellence and innovation.
+            Discover the innovative solutions we've built for our clients across
+            various industries. Each project represents our commitment to
+            excellence and innovation.
           </p>
 
           {/* Stats */}
@@ -105,9 +138,10 @@ export default function PortfolioPage() {
           </div>
 
           <Link to="/contact">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
-              <MessageSquare className="mr-2 h-5 w-5" />
-              Start Your Project
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6">
+              Start Your Project <MessageSquare className="ml-2 h-5 w-5" />
             </Button>
           </Link>
         </div>
@@ -122,22 +156,27 @@ export default function PortfolioPage() {
               Project Highlights
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Showcasing our most impactful and innovative projects that have transformed businesses.
+              Showcasing our most impactful and innovative projects that have
+              transformed businesses.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {featuredProjects.map((project, index) => {
-              const projectImage = PlaceHolderImages.find((img) => img.id === `project-${index + 1}`);
+              const projectImage = PlaceHolderImages.find(
+                (img) => img.id === `project-${index + 1}`
+              );
               return (
-                <Card key={project.id} className="group relative overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500">
+                <Card
+                  key={project.id}
+                  className="group relative overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500">
                   <div className="absolute top-4 left-4 z-20">
                     <Badge className="bg-primary text-white">
                       <Star className="mr-1 h-3 w-3" />
                       Featured
                     </Badge>
                   </div>
-                  
+
                   {projectImage && (
                     <div className="aspect-video relative overflow-hidden">
                       <img
@@ -151,8 +190,12 @@ export default function PortfolioPage() {
                         <Badge className="mb-2 bg-white/20 text-white border-white/30">
                           {project.category}
                         </Badge>
-                        <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
-                        <p className="text-white/90 mb-2">{project.description}</p>
+                        <h3 className="text-2xl font-bold mb-2">
+                          {project.name}
+                        </h3>
+                        <p className="text-white/90 mb-2">
+                          {project.description}
+                        </p>
                         <div className="flex items-center text-sm text-green-400">
                           <TrendingUp className="h-4 w-4 mr-1" />
                           <span>{project.impact}</span>
@@ -160,7 +203,7 @@ export default function PortfolioPage() {
                       </div>
                     </div>
                   )}
-                  
+
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Button className="flex-1 group-hover:shadow-lg transition-shadow duration-300">
@@ -192,7 +235,7 @@ export default function PortfolioPage() {
                 Explore our complete portfolio of successful projects
               </p>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               {/* Category Filter */}
               <div className="flex items-center space-x-2">
@@ -201,46 +244,61 @@ export default function PortfolioPage() {
                   {categories.map((category) => (
                     <Button
                       key={category}
-                      variant={selectedCategory === category ? "default" : "ghost"}
+                      variant={
+                        selectedCategory === category ? "default" : "ghost"
+                      }
                       size="sm"
                       onClick={() => setSelectedCategory(category)}
-                      className="text-sm"
-                    >
+                      className="text-sm">
                       {category}
                     </Button>
                   ))}
                 </div>
               </div>
-              
+
               {/* View Mode Toggle */}
               <div className="flex items-center bg-card rounded-lg p-1">
                 <Button
-                  variant={viewMode === 'grid' ? "default" : "ghost"}
+                  variant={viewMode === "grid" ? "default" : "ghost"}
                   size="sm"
-                  onClick={() => setViewMode('grid')}
-                  className="p-2"
-                >
+                  onClick={() => setViewMode("grid")}
+                  className="p-2">
                   <Grid3X3 className="h-4 w-4" />
                 </Button>
                 <Button
-                  variant={viewMode === 'list' ? "default" : "ghost"}
+                  variant={viewMode === "list" ? "default" : "ghost"}
                   size="sm"
-                  onClick={() => setViewMode('list')}
-                  className="p-2"
-                >
+                  onClick={() => setViewMode("list")}
+                  className="p-2">
                   <List className="h-4 w-4" />
                 </Button>
               </div>
             </div>
           </div>
 
-          <div className={`grid gap-8 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>
+          <div
+            className={`grid gap-8 ${
+              viewMode === "grid"
+                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                : "grid-cols-1"
+            }`}>
             {filteredProjects.map((project) => {
-              const projectImage = PlaceHolderImages.find((img) => img.id === project.imageId);
+              const projectImage = PlaceHolderImages.find(
+                (img) => img.id === project.imageId
+              );
               return (
-                <Card key={project.id} className={`group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${viewMode === 'list' ? 'flex-row' : ''}`}>
+                <Card
+                  key={project.id}
+                  className={`group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
+                    viewMode === "list" ? "flex-row" : ""
+                  }`}>
                   {projectImage && (
-                    <div className={`relative overflow-hidden ${viewMode === 'list' ? 'w-1/3 aspect-square' : 'aspect-video w-full'}`}>
+                    <div
+                      className={`relative overflow-hidden ${
+                        viewMode === "list"
+                          ? "w-1/3 aspect-square"
+                          : "aspect-video w-full"
+                      }`}>
                       <img
                         src={projectImage.imageUrl}
                         alt={project.name}
@@ -256,21 +314,23 @@ export default function PortfolioPage() {
                       </div>
                     </div>
                   )}
-                  
-                  <div className={`flex-1 ${viewMode === 'list' ? 'flex flex-col justify-between' : ''}`}>
+
+                  <div
+                    className={`flex-1 ${
+                      viewMode === "list" ? "flex flex-col justify-between" : ""
+                    }`}>
                     <CardHeader>
-                      <CardTitle>
-                        {project.name}
-                      </CardTitle>
-                      <CardDescription>
-                        {project.description}
-                      </CardDescription>
+                      <CardTitle>{project.name}</CardTitle>
+                      <CardDescription>{project.description}</CardDescription>
                     </CardHeader>
-                    
+
                     <CardContent>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {project.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary" className="text-xs">
+                          <Badge
+                            key={tag}
+                            variant="secondary"
+                            className="text-xs">
                             {tag}
                           </Badge>
                         ))}
@@ -280,9 +340,14 @@ export default function PortfolioPage() {
                         <span>Completed in 2024</span>
                       </div>
                     </CardContent>
-                    
-                    <CardFooter className={`gap-2 ${viewMode === 'list' ? 'flex-wrap' : ''}`}>
-                      <Button size="sm" className="flex-1 group-hover:shadow-md transition-shadow duration-300">
+
+                    <CardFooter
+                      className={`gap-2 ${
+                        viewMode === "list" ? "flex-wrap" : ""
+                      }`}>
+                      <Button
+                        size="sm"
+                        className="flex-1 group-hover:shadow-md transition-shadow duration-300">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         View Project
                       </Button>
@@ -300,8 +365,10 @@ export default function PortfolioPage() {
             <div className="text-center py-16">
               <div className="text-6xl mb-4">🔍</div>
               <h3 className="text-2xl font-semibold mb-2">No projects found</h3>
-              <p className="text-muted-foreground mb-6">Try adjusting your filter criteria</p>
-              <Button onClick={() => setSelectedCategory('All')}>
+              <p className="text-muted-foreground mb-6">
+                Try adjusting your filter criteria
+              </p>
+              <Button onClick={() => setSelectedCategory("All")}>
                 Show All Projects
               </Button>
             </div>
@@ -316,7 +383,7 @@ export default function PortfolioPage() {
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             Impressed by Our Work?
           </Badge>
-          
+
           <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6">
             Ready to Create Your
             <br />
@@ -324,23 +391,26 @@ export default function PortfolioPage() {
               Success Story?
             </span>
           </h2>
-          
+
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90 leading-relaxed">
-            Join our satisfied clients and let us transform your vision into a remarkable digital solution 
-            that drives real business results.
+            Join our satisfied clients and let us transform your vision into a
+            remarkable digital solution that drives real business results.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
-                <MessageSquare className="mr-2 h-5 w-5" />
-                Discuss Your Project
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6">
+                Discuss Your Project <MessageSquare className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Link to="/services">
-              <Button size="lg" className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
-                Our Services
+            <Link to="/portfolio">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
                 <ArrowRight className="ml-2 h-5 w-5" />
+                Our Services
               </Button>
             </Link>
           </div>

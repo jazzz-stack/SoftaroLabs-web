@@ -562,8 +562,8 @@ export default function HomePage() {
             <Link to="/services">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-slate-100 via-white to-gray-100 text-primary border-2 border-transparent hover:from-gray-200 hover:via-gray-50 hover:to-slate-200 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
-                Learn About Our Process
+                className="bg-gradient-to-r from-red-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
+                Learn About Our Services
               </Button>
             </Link>
           </div>

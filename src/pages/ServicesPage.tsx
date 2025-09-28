@@ -96,32 +96,38 @@ export default function ServicesPage() {
         )}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent"></div>
-        
+
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             <Code className="mr-2 h-4 w-4" />
             Professional Services
           </Badge>
-          
+
           <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Our
-            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent"> Services</span>
+            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+              {" "}
+              Services
+            </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">
-            Comprehensive software solutions tailored to your business needs. 
+            Comprehensive software solutions tailored to your business needs.
             From concept to deployment, we've got you covered.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
-                <MessageSquare className="mr-2 h-5 w-5" />
-                Get Free Consultation
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6">
+                Get Free Consultation <MessageSquare className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Link to="/portfolio">
-              <Button size="lg" className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
                 <Eye className="mr-2 h-5 w-5" />
                 View Our Work
               </Button>
@@ -139,17 +145,22 @@ export default function ServicesPage() {
               Complete Digital Solutions
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We provide end-to-end services to transform your ideas into powerful digital solutions.
+              We provide end-to-end services to transform your ideas into
+              powerful digital solutions.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             {services.map((service, index) => {
-              const serviceImage = PlaceHolderImages.find((img) => img.id === service.imageId);
+              const serviceImage = PlaceHolderImages.find(
+                (img) => img.id === service.imageId
+              );
               return (
-                <Card key={service.title} className="group relative overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500">
+                <Card
+                  key={service.title}
+                  className="group relative overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   {/* Service Image */}
                   {serviceImage && (
                     <div className="aspect-video relative overflow-hidden">
@@ -167,30 +178,34 @@ export default function ServicesPage() {
                       </div>
                     </div>
                   )}
-                  
+
                   <CardHeader className="relative z-10">
                     <div className="flex items-start justify-between mb-4">
                       <div>
-                        <CardTitle>
-                          {service.title}
-                        </CardTitle>
-                        <CardDescription>
-                          {service.description}
-                        </CardDescription>
+                        <CardTitle>{service.title}</CardTitle>
+                        <CardDescription>{service.description}</CardDescription>
                       </div>
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent className="relative z-10">
                     <div className="mb-6">
-                      <h4 className="font-semibold mb-3 text-lg">What's Included:</h4>
+                      <h4 className="font-semibold mb-3 text-lg">
+                        What's Included:
+                      </h4>
                       <div className="grid grid-cols-1 gap-3">
-                        {service.features.slice(0, 4).map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-start space-x-3">
-                            <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-muted-foreground leading-relaxed">{feature}</span>
-                          </div>
-                        ))}
+                        {service.features
+                          .slice(0, 4)
+                          .map((feature, featureIndex) => (
+                            <div
+                              key={featureIndex}
+                              className="flex items-start space-x-3">
+                              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-muted-foreground leading-relaxed">
+                                {feature}
+                              </span>
+                            </div>
+                          ))}
                         {service.features.length > 4 && (
                           <div className="text-sm text-primary font-medium mt-2">
                             +{service.features.length - 4} more features
@@ -198,7 +213,7 @@ export default function ServicesPage() {
                         )}
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link to="/contact" className="flex-1">
                         <Button className="w-full group-hover:shadow-lg transition-shadow duration-300">
@@ -227,24 +242,27 @@ export default function ServicesPage() {
               How We Work
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our proven methodology ensures successful project delivery from concept to completion.
+              Our proven methodology ensures successful project delivery from
+              concept to completion.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
-              <Card key={index} className="text-center border-none shadow-lg bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <Card
+                key={index}
+                className="text-center border-none shadow-lg bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 <CardHeader>
                   <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10">
                     {step.icon}
                   </div>
-                  <div className="text-6xl font-bold text-primary/20 mb-2">{step.step}</div>
+                  <div className="text-6xl font-bold text-primary/20 mb-2">
+                    {step.step}
+                  </div>
                   <CardTitle>{step.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription>
-                    {step.description}
-                  </CardDescription>
+                  <CardDescription>{step.description}</CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -261,7 +279,8 @@ export default function ServicesPage() {
               Your Success is Our Priority
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We combine technical expertise with business insight to deliver solutions that drive results.
+              We combine technical expertise with business insight to deliver
+              solutions that drive results.
             </p>
           </div>
 
@@ -290,7 +309,7 @@ export default function ServicesPage() {
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             Ready to Get Started?
           </Badge>
-          
+
           <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6">
             Transform Your Business
             <br />
@@ -298,21 +317,38 @@ export default function ServicesPage() {
               With Our Expertise
             </span>
           </h2>
-          
+
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90 leading-relaxed">
-            Ready to take your business to the next level? Let's discuss your project requirements 
-            and create a custom solution that exceeds your expectations.
+            Ready to take your business to the next level? Let's discuss your
+            project requirements and create a custom solution that exceeds your
+            expectations.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
+              {/* <Button
+                size="lg"
+                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Request Free Quote
               </Button>
             </Link>
             <Link to="/about">
-              <Button size="lg" className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
+              <Button
+                size="lg"
+                className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
+                Learn About Our Team
+              </Button> */}
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6">
+                Request Free Quote <MessageSquare className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link to="/portfolio">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
                 Learn About Our Team
               </Button>
             </Link>

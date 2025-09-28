@@ -77,7 +77,7 @@ export default function BlogPostPage() {
                 <p className="text-lg text-muted-foreground max-w-2xl">
                   {post.excerpt}
                 </p>
-                <Button variant="outline" size="sm">
+                <Button variant="default" size="sm">
                   <Share2 className="h-4 w-4 mr-2" />
                   Share
                 </Button>
@@ -125,7 +125,7 @@ export default function BlogPostPage() {
             <div className="mt-12 pt-8 border-t border-border">
               <div className="flex items-center justify-between">
                 <Link to="/blog">
-                  <Button variant="outline">
+                  <Button variant="outlined">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Back to Blog
                   </Button>

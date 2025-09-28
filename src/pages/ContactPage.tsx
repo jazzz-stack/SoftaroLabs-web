@@ -140,29 +140,36 @@ export default function ContactPage() {
         )}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent"></div>
-        
+
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             <HeadphonesIcon className="mr-2 h-4 w-4" />
             24/7 Support Available
           </Badge>
-          
+
           <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Get in
-            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent"> Touch</span>
+            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+              {" "}
+              Touch
+            </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">
-            Ready to start your project? We'd love to hear from you. 
-            Let's discuss how we can bring your vision to life.
+            Ready to start your project? We'd love to hear from you. Let's
+            discuss how we can bring your vision to life.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6">
               <MessageSquare className="mr-2 h-5 w-5" />
               Start Free Consultation
             </Button>
-            <Button size="lg" className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
               <Phone className="mr-2 h-5 w-5" />
               Call Now
             </Button>
@@ -199,28 +206,31 @@ export default function ContactPage() {
               How Would You Like to Connect?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose the communication method that works best for you. We're here to help in any way we can.
+              Choose the communication method that works best for you. We're
+              here to help in any way we can.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method, index) => (
-              <Card key={index} className="group text-center border-none shadow-lg bg-card hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 cursor-pointer">
+              <Card
+                key={index}
+                className="group text-center border-none shadow-lg bg-card hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 cursor-pointer">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
                 <CardHeader className="relative z-10">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                     {method.icon}
                   </div>
-                  <CardTitle>
-                    {method.title}
-                  </CardTitle>
-                  <CardDescription>
-                    {method.description}
-                  </CardDescription>
+                  <CardTitle>{method.title}</CardTitle>
+                  <CardDescription>{method.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="relative z-10">
-                  <div className="font-semibold text-lg mb-2 text-primary">{method.contact}</div>
-                  <div className="text-sm text-muted-foreground">{method.subtitle}</div>
+                  <div className="font-semibold text-lg mb-2 text-primary">
+                    {method.contact}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {method.subtitle}
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -240,7 +250,8 @@ export default function ContactPage() {
                   Let's Start Your Project
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Fill out the form below and we'll get back to you within 2 hours with a detailed response.
+                  Fill out the form below and we'll get back to you within 2
+                  hours with a detailed response.
                 </p>
               </div>
 
@@ -250,15 +261,18 @@ export default function ContactPage() {
                     <Alert className="mb-6 border-green-200 bg-green-50">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       <AlertDescription>
-                        Thank you for your message! We'll get back to you within 2 hours.
+                        Thank you for your message! We'll get back to you within
+                        2 hours.
                       </AlertDescription>
                     </Alert>
                   )}
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <Label htmlFor="name" className="text-base font-medium">Full Name *</Label>
+                        <Label htmlFor="name" className="text-base font-medium">
+                          Full Name *
+                        </Label>
                         <Input
                           id="name"
                           name="name"
@@ -270,7 +284,11 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="email" className="text-base font-medium">Email Address *</Label>
+                        <Label
+                          htmlFor="email"
+                          className="text-base font-medium">
+                          Email Address *
+                        </Label>
                         <Input
                           id="email"
                           name="email"
@@ -283,10 +301,14 @@ export default function ContactPage() {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <Label htmlFor="company" className="text-base font-medium">Company</Label>
+                        <Label
+                          htmlFor="company"
+                          className="text-base font-medium">
+                          Company
+                        </Label>
                         <Input
                           id="company"
                           name="company"
@@ -297,41 +319,57 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="service" className="text-base font-medium">Service Needed</Label>
+                        <Label
+                          htmlFor="service"
+                          className="text-base font-medium">
+                          Service Needed
+                        </Label>
                         <select
                           id="service"
                           name="service"
                           value={formData.service}
                           onChange={handleChange}
-                          className="mt-2 h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                        >
+                          className="mt-2 h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
                           <option value="">Select a service</option>
                           {services.map((service) => (
-                            <option key={service} value={service}>{service}</option>
+                            <option key={service} value={service}>
+                              {service}
+                            </option>
                           ))}
                         </select>
                       </div>
                     </div>
-                    
+
                     <div>
-                      <Label htmlFor="budget" className="text-base font-medium">Project Budget</Label>
+                      <Label htmlFor="budget" className="text-base font-medium">
+                        Project Budget
+                      </Label>
                       <select
                         id="budget"
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="mt-2 h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                      >
+                        className="mt-2 h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
                         <option value="">Select budget range</option>
-                        <option value="$5,000 - $15,000">$5,000 - $15,000</option>
-                        <option value="$15,000 - $50,000">$15,000 - $50,000</option>
-                        <option value="$50,000 - $100,000">$50,000 - $100,000</option>
+                        <option value="$5,000 - $15,000">
+                          $5,000 - $15,000
+                        </option>
+                        <option value="$15,000 - $50,000">
+                          $15,000 - $50,000
+                        </option>
+                        <option value="$50,000 - $100,000">
+                          $50,000 - $100,000
+                        </option>
                         <option value="$100,000+">$100,000+</option>
                       </select>
                     </div>
-                    
+
                     <div>
-                      <Label htmlFor="message" className="text-base font-medium">Project Details *</Label>
+                      <Label
+                        htmlFor="message"
+                        className="text-base font-medium">
+                        Project Details *
+                      </Label>
                       <Textarea
                         id="message"
                         name="message"
@@ -343,13 +381,12 @@ export default function ContactPage() {
                         required
                       />
                     </div>
-                    
-                    <Button 
-                      type="submit" 
-                      disabled={isSubmitting} 
-                      size="lg" 
-                      className="w-full h-14 text-lg"
-                    >
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      size="lg"
+                      className="w-full h-14 text-lg">
                       {isSubmitting ? (
                         <>
                           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
@@ -362,9 +399,10 @@ export default function ContactPage() {
                         </>
                       )}
                     </Button>
-                    
+
                     <p className="text-sm text-muted-foreground text-center mt-4">
-                      By submitting this form, you agree to our privacy policy and terms of service.
+                      By submitting this form, you agree to our privacy policy
+                      and terms of service.
                     </p>
                   </form>
                 </CardContent>
@@ -378,7 +416,8 @@ export default function ContactPage() {
                 <CardHeader>
                   <CardTitle>Get Direct Access</CardTitle>
                   <CardDescription>
-                    Prefer to reach out directly? Here are all the ways to connect with us.
+                    Prefer to reach out directly? Here are all the ways to
+                    connect with us.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -388,22 +427,30 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1">
                       <p className="font-semibold text-lg">Email</p>
-                      <p className="text-primary text-lg font-medium">hello@softarolabs.com</p>
-                      <p className="text-muted-foreground text-sm">We respond within 2 hours</p>
+                      <p className="text-primary text-lg font-medium">
+                        hello@softarolabs.com
+                      </p>
+                      <p className="text-muted-foreground text-sm">
+                        We respond within 2 hours
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
                       <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
                       <p className="font-semibold text-lg">Phone</p>
-                      <p className="text-primary text-lg font-medium">+1 (555) 123-4567</p>
-                      <p className="text-muted-foreground text-sm">Mon-Fri, 9AM-6PM EST</p>
+                      <p className="text-primary text-lg font-medium">
+                        +1 (555) 123-4567
+                      </p>
+                      <p className="text-muted-foreground text-sm">
+                        Mon-Fri, 9AM-6PM EST
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
                       <MapPin className="h-6 w-6 text-primary" />
@@ -411,13 +458,15 @@ export default function ContactPage() {
                     <div className="flex-1">
                       <p className="font-semibold text-lg">Address</p>
                       <p className="text-muted-foreground">
-                        123 Tech Street<br />
-                        Innovation City, IC 12345<br />
+                        123 Tech Street
+                        <br />
+                        Innovation City, IC 12345
+                        <br />
                         United States
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
                       <Globe className="h-6 w-6 text-primary" />
@@ -425,7 +474,8 @@ export default function ContactPage() {
                     <div className="flex-1">
                       <p className="font-semibold text-lg">Global Reach</p>
                       <p className="text-muted-foreground">
-                        Serving clients worldwide<br />
+                        Serving clients worldwide
+                        <br />
                         Remote collaboration available
                       </p>
                     </div>
@@ -438,7 +488,8 @@ export default function ContactPage() {
                 <CardHeader>
                   <CardTitle>Why Work With Us?</CardTitle>
                   <CardDescription>
-                    Here's what you can expect when you partner with Softaro Labs.
+                    Here's what you can expect when you partner with Softaro
+                    Labs.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -447,7 +498,9 @@ export default function ContactPage() {
                       {reason.icon}
                       <div>
                         <h4 className="font-semibold mb-1">{reason.title}</h4>
-                        <p className="text-sm text-muted-foreground">{reason.description}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {reason.description}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -464,19 +517,25 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <Link to="/services">
-                    <Button variant="ghost" className="w-full justify-start h-12 text-base">
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start h-12 text-base">
                       Our Services
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Button>
                   </Link>
                   <Link to="/portfolio">
-                    <Button variant="ghost" className="w-full justify-start h-12 text-base">
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start h-12 text-base">
                       View Portfolio
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Button>
                   </Link>
                   <Link to="/about">
-                    <Button variant="ghost" className="w-full justify-start h-12 text-base">
+                    <Button
+                      variant="ghost"
+                      className="w-full justify-start h-12 text-base">
                       About Our Team
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Button>
@@ -495,7 +554,7 @@ export default function ContactPage() {
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             Ready to Start?
           </Badge>
-          
+
           <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6">
             Let's Build Something
             <br />
@@ -503,19 +562,23 @@ export default function ContactPage() {
               Amazing Together
             </span>
           </h2>
-          
+
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90 leading-relaxed">
-            Don't wait! The perfect time to start your project is now. 
-            Let's turn your vision into reality.
+            Don't wait! The perfect time to start your project is now. Let's
+            turn your vision into reality.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
               <Phone className="mr-2 h-5 w-5" />
               Call Now: +1 (555) 123-4567
             </Button>
             <Link to="/portfolio">
-              <Button size="lg" className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
+              <Button
+                size="lg"
+                className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
                 See Our Work
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

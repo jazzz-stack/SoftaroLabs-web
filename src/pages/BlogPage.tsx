@@ -65,21 +65,24 @@ export default function BlogPage() {
         )}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent"></div>
-        
+
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             <BookOpen className="mr-2 h-4 w-4" />
             Tech Insights & Tutorials
           </Badge>
-          
+
           <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Our
-            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent"> Blog</span>
+            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+              {" "}
+              Blog
+            </span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">
-            Insights, tutorials, and thoughts on the latest in software development, 
-            technology trends, and digital innovation.
+            Insights, tutorials, and thoughts on the latest in software
+            development, technology trends, and digital innovation.
           </p>
 
           {/* Stats */}
@@ -95,7 +98,9 @@ export default function BlogPage() {
             ))}
           </div>
 
-          <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
             <BookOpen className="mr-2 h-5 w-5" />
             Start Reading
           </Button>
@@ -184,7 +189,7 @@ export default function BlogPage() {
                 Stay updated with our latest insights and tutorials
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
               {/* Search */}
               <div className="relative">
@@ -197,7 +202,7 @@ export default function BlogPage() {
                   className="pl-10 pr-4 py-2 border border-input rounded-md bg-background w-64 focus:ring-2 focus:ring-primary focus:border-primary"
                 />
               </div>
-              
+
               {/* Category Filter */}
               <div className="flex items-center space-x-2">
                 <Filter className="h-5 w-5 text-muted-foreground" />
@@ -205,11 +210,12 @@ export default function BlogPage() {
                   {categories.map((category) => (
                     <Button
                       key={category}
-                      variant={selectedCategory === category ? "default" : "ghost"}
+                      variant={
+                        selectedCategory === category ? "default" : "ghost"
+                      }
                       size="sm"
                       onClick={() => setSelectedCategory(category)}
-                      className="text-sm"
-                    >
+                      className="text-sm">
                       {category}
                     </Button>
                   ))}
@@ -220,9 +226,13 @@ export default function BlogPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => {
-              const postImage = PlaceHolderImages.find((img) => img.id === post.imageId);
+              const postImage = PlaceHolderImages.find(
+                (img) => img.id === post.imageId
+              );
               return (
-                <Card key={post.slug} className="group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <Card
+                  key={post.slug}
+                  className="group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                   {postImage && (
                     <div className="aspect-video relative overflow-hidden">
                       <img
@@ -240,16 +250,14 @@ export default function BlogPage() {
                       </div>
                     </div>
                   )}
-                  
+
                   <CardHeader>
-                    <CardTitle>
-                      {post.title}
-                    </CardTitle>
+                    <CardTitle>{post.title}</CardTitle>
                     <CardDescription>
                       {post.content.substring(0, 150)}...
                     </CardDescription>
                   </CardHeader>
-                  
+
                   <CardContent>
                     <div className="flex items-center justify-between text-sm text-muted-foreground">
                       <div className="flex items-center space-x-3">
@@ -263,12 +271,11 @@ export default function BlogPage() {
                         </div>
                       </div>
                       <div className="flex items-center">
-                        <Clock className="h-3 w-3 mr-1" />
-                        5 min
+                        <Clock className="h-3 w-3 mr-1" />5 min
                       </div>
                     </div>
                   </CardContent>
-                  
+
                   <CardFooter>
                     <Link to={`/blog/${post.slug}`} className="w-full">
                       <Button className="w-full group-hover:shadow-md transition-shadow duration-300">
@@ -286,8 +293,14 @@ export default function BlogPage() {
             <div className="text-center py-16">
               <div className="text-6xl mb-4">📝</div>
               <h3 className="text-2xl font-semibold mb-2">No articles found</h3>
-              <p className="text-muted-foreground mb-6">Try adjusting your search or filter criteria</p>
-              <Button onClick={() => {setSelectedCategory('All'); setSearchTerm('');}}>
+              <p className="text-muted-foreground mb-6">
+                Try adjusting your search or filter criteria
+              </p>
+              <Button
+                onClick={() => {
+                  setSelectedCategory("All");
+                  setSearchTerm("");
+                }}>
                 Show All Articles
               </Button>
             </div>
@@ -302,7 +315,7 @@ export default function BlogPage() {
           <Badge className="mb-6 bg-white/20 text-white border-white/30">
             Stay Updated
           </Badge>
-          
+
           <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6">
             Never Miss
             <br />
@@ -310,23 +323,25 @@ export default function BlogPage() {
               An Update
             </span>
           </h2>
-          
+
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90 leading-relaxed">
-            Subscribe to our newsletter and get the latest articles, tutorials, and tech insights 
-            delivered straight to your inbox.
+            Subscribe to our newsletter and get the latest articles, tutorials,
+            and tech insights delivered straight to your inbox.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
               className="flex-1 px-6 py-4 rounded-lg text-gray-900 bg-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 px-8">
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 px-8">
               Subscribe
             </Button>
           </div>
-          
+
           <p className="text-sm text-white/70 mt-4">
             Join 5,000+ developers and designers. Unsubscribe anytime.
           </p>

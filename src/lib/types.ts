@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Service {
   title: string;
   description: string;
@@ -17,6 +19,9 @@ export interface Project {
 }
 
 export interface BlogPost {
+  publishedAt: string | number | Date;
+  readTime: ReactNode;
+  excerpt: ReactNode;
   id: string;
   slug: string;
   title: string;

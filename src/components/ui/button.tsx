@@ -5,13 +5,16 @@ import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/materia
 import { styled } from '@mui/material/styles';
 
 // Custom styled button to match your design system
-const StyledButton = styled(MuiButton)(({ theme, variant }) => ({
+const StyledButton = styled(MuiButton, {
+  shouldForwardProp: (prop) => prop !== 'hasCustomGradient',
+})<{ hasCustomGradient?: boolean }>(({ theme, variant, hasCustomGradient }) => ({
   borderRadius: theme.shape.borderRadius,
   textTransform: 'none',
   fontWeight: 500,
   padding: '8px 16px',
   
-  ...(variant === 'contained' && {
+  // Only apply default gradient if no custom gradient is provided
+  ...(!hasCustomGradient && variant === 'contained' && {
     background: 'linear-gradient(135deg, #4787FF 0%, #5a96ff 100%)',
     boxShadow: '0 2px 4px rgba(71, 135, 255, 0.2)',
     '&:hover': {
@@ -47,9 +50,13 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'contained', 
   size = 'medium', 
   children,
+  className = '',
   asChild, // Extract and ignore this prop
   ...props 
 }) => {
+  // Check if className contains gradient classes
+  const hasCustomGradient = className.includes('bg-gradient') || className.includes('from-') || className.includes('to-');
+  
   // Map custom variants to MUI variants
   const getMuiVariant = (variant: string) => {
     switch (variant) {
@@ -90,10 +97,12 @@ export const Button: React.FC<ButtonProps> = ({
   const muiVariant = getMuiVariant(variant);
   const muiSize = getMuiSize(size);
 
-  const buttonProps: MuiButtonProps = {
+  const buttonProps: MuiButtonProps & { hasCustomGradient?: boolean } = {
     ...props,
+    className,
     variant: muiVariant as 'text' | 'outlined' | 'contained',
     size: muiSize as 'small' | 'medium' | 'large',
+    hasCustomGradient,
   };
 
   // Handle destructive variant
