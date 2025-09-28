@@ -124,13 +124,13 @@ export default function HomePage() {
           </Badge>
 
           <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            Build the
+            Transforming
             <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
               {" "}
-              Future
+              Ideas
             </span>
             <br />
-            with Code
+            into Digital Reality
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">

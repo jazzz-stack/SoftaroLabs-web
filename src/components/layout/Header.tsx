@@ -168,7 +168,26 @@ export function Header() {
           </div>
           <nav className="hidden md:flex items-center">
             <Link to="/contact">
-              <Button>Get a Quote</Button>
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-800 to-blue-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                <Button className="relative px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-2xl transition-all duration-1000 transform hover:scale-105 hover:-translate-y-0.5 active:scale-95">
+                  <span className="flex items-center space-x-2">
+                    <span>Get a Quote</span>
+                    <svg
+                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5-5 5M6 12h12"
+                      />
+                    </svg>
+                  </span>
+                </Button>
+              </div>
             </Link>
           </nav>
         </div>
