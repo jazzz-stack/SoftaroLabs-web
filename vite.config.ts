@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV || "/SoftaroLabs-web/",
+  base: process.env.VITE_BASE_PATH || "/SoftaroLabs-web/",
   server: {
     port: 9002,
   },
