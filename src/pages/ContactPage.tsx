@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { contactApi, ContactFormData, ContactResponse } from '@/services/contactApi';
 import { 
   Mail, 
   Phone, 
@@ -102,21 +103,52 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string>('');
+  const [submitSuccess, setSubmitSuccess] = useState<string>('');
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
+    setSubmitSuccess('');
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setSubmitted(true);
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', company: '', service: '', budget: '', message: '' });
-    
-    // Reset submitted state after 5 seconds
-    setTimeout(() => setSubmitted(false), 5000);
+    try {
+      // Prepare form data for API
+      const contactFormData: ContactFormData = {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company || undefined,
+        service: formData.service || undefined,
+        budget: formData.budget || undefined,
+        message: formData.message
+      };
+
+      // Submit to API
+      const response: ContactResponse = await contactApi.submitContact(contactFormData);
+      
+      if (response.success) {
+        setSubmitted(true);
+        setSubmitSuccess(response.message);
+        setFormData({ name: '', email: '', company: '', service: '', budget: '', message: '' });
+        
+        // Reset success state after 10 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+          setSubmitSuccess('');
+        }, 10000);
+      } else {
+        setSubmitError(response.message || 'An error occurred while sending your message.');
+        if (response.errors && response.errors.length > 0) {
+          setSubmitError(response.errors.join(', '));
+        }
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -257,12 +289,19 @@ export default function ContactPage() {
 
               <Card className="shadow-xl border-none">
                 <CardContent className="p-8">
-                  {submitted && (
+                  {submitted && submitSuccess && (
                     <Alert className="mb-6 border-green-200 bg-green-50">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       <AlertDescription>
-                        Thank you for your message! We'll get back to you within
-                        2 hours.
+                        <span className="text-green-800">{submitSuccess}</span>
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
+                  {submitError && (
+                    <Alert className="mb-6 border-red-200 bg-red-50">
+                      <AlertDescription>
+                        <span className="text-red-800">{submitError}</span>
                       </AlertDescription>
                     </Alert>
                   )}
@@ -351,6 +390,8 @@ export default function ContactPage() {
                         onChange={handleChange}
                         className="mt-2 h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
                         <option value="">Select budget range</option>
+                        <option value="$100 - $1,000">$100 - $1,000</option>
+                        <option value="$1,000 - $5,000">$1,000 - $5,000</option>
                         <option value="$5,000 - $15,000">
                           $5,000 - $15,000
                         </option>
