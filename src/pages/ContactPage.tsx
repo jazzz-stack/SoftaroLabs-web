@@ -39,7 +39,7 @@ const contactMethods = [
     icon: <Phone className="h-8 w-8 text-primary" />,
     title: 'Call Us',
     description: 'Speak directly with our team',
-    contact: '+1 (555) 123-4567',
+    contact: '+91 80 5200 4200',
     subtitle: 'Mon-Fri, 9AM-6PM EST'
   },
   {
@@ -484,7 +484,7 @@ export default function ContactPage() {
                     <div className="flex-1">
                       <p className="font-semibold text-lg">Phone</p>
                       <p className="text-primary text-lg font-medium">
-                        +1 (555) 123-4567
+                        +91 80 5200 4200
                       </p>
                       <p className="text-muted-foreground text-sm">
                         Mon-Fri, 9AM-6PM EST
@@ -614,7 +614,7 @@ export default function ContactPage() {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
               <Phone className="mr-2 h-5 w-5" />
-              Call Now: +1 (555) 123-4567
+              Call Now: +91 80 5200 4200
             </Button>
             <Link to="/portfolio">
               <Button
