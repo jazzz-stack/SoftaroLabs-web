@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { services } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,9 @@ import {
   TrendingUp,
   Users,
   MessageSquare,
-  Eye
+  Eye,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 const serviceIcons: { [key: string]: React.ReactNode } = {
@@ -81,6 +83,14 @@ const whyChooseUs = [
 
 export default function ServicesPage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
+  const [expandedServices, setExpandedServices] = useState<{ [key: string]: boolean }>({});
+
+  const toggleServiceFeatures = (serviceTitle: string) => {
+    setExpandedServices(prev => ({
+      ...prev,
+      [serviceTitle]: !prev[serviceTitle]
+    }));
+  };
   
   return (
     <div className="flex flex-col">
@@ -195,7 +205,7 @@ export default function ServicesPage() {
                       </h4>
                       <div className="grid grid-cols-1 gap-3">
                         {service.features
-                          .slice(0, 4)
+                          .slice(0, expandedServices[service.title] ? service.features.length : 4)
                           .map((feature, featureIndex) => (
                             <div
                               key={featureIndex}
@@ -207,9 +217,22 @@ export default function ServicesPage() {
                             </div>
                           ))}
                         {service.features.length > 4 && (
-                          <div className="text-sm text-primary font-medium mt-2">
-                            +{service.features.length - 4} more features
-                          </div>
+                          <button
+                            onClick={() => toggleServiceFeatures(service.title)}
+                            className="flex items-center gap-1 text-sm text-primary font-medium mt-2 hover:text-primary/80 transition-colors cursor-pointer"
+                          >
+                            {expandedServices[service.title] ? (
+                              <>
+                                <ChevronUp className="h-4 w-4" />
+                                Show less
+                              </>
+                            ) : (
+                              <>
+                                <ChevronDown className="h-4 w-4" />
+                                +{service.features.length - 4} more features
+                              </>
+                            )}
+                          </button>
                         )}
                       </div>
                     </div>
@@ -221,7 +244,14 @@ export default function ServicesPage() {
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                         </Button>
                       </Link>
-                      <Button variant="outlined" className="flex-1">
+                      <Button 
+                        variant="outlined" 
+                        className="flex-1"
+                        onClick={() => {
+                          const processSection = document.getElementById('process-section');
+                          processSection?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
                         Learn More
                       </Button>
                     </div>
@@ -234,7 +264,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gradient-to-b from-secondary/20 to-background">
+      <section id="process-section" className="py-20 bg-gradient-to-b from-secondary/20 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4">Our Process</Badge>

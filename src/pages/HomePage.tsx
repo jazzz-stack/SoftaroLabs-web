@@ -410,6 +410,7 @@ export default function HomePage() {
               return (
                 <Card
                   key={project.id}
+                  onClick={() => window.open(project.link, '_blank')}
                   className="group relative overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105">
                   {/* Gradient Overlay for Card */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>

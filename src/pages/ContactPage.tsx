@@ -30,32 +30,32 @@ import { Link } from 'react-router-dom';
 const contactMethods = [
   {
     icon: <Mail className="h-8 w-8 text-primary" />,
-    title: 'Email Us',
-    description: 'Get in touch via email',
-    contact: 'hello@softarolabs.com',
-    subtitle: 'We respond within 2 hours'
+    title: "Email Us",
+    description: "Get in touch via email",
+    contact: "help@softarolabs.com",
+    subtitle: "We respond within 2 hours",
   },
   {
     icon: <Phone className="h-8 w-8 text-primary" />,
-    title: 'Call Us',
-    description: 'Speak directly with our team',
-    contact: '+91 80 5200 4200',
-    subtitle: 'Mon-Fri, 9AM-6PM EST'
+    title: "Call Us",
+    description: "Speak directly with our team",
+    contact: "+91 80 5200 4200",
+    subtitle: "Mon-Fri, 9AM-6PM EST",
   },
   {
     icon: <MessageSquare className="h-8 w-8 text-primary" />,
-    title: 'Live Chat',
-    description: 'Chat with us in real-time',
-    contact: 'Start Chat',
-    subtitle: 'Available 24/7'
+    title: "Live Chat",
+    description: "Chat with us in real-time",
+    contact: "Start Chat",
+    subtitle: "Available 24/7",
   },
   {
     icon: <Calendar className="h-8 w-8 text-primary" />,
-    title: 'Book a Meeting',
-    description: 'Schedule a consultation',
-    contact: 'Schedule Now',
-    subtitle: 'Free 30-min consultation'
-  }
+    title: "Book a Meeting",
+    description: "Schedule a consultation",
+    contact: "Schedule Now",
+    subtitle: "Free 30-min consultation",
+  },
 ];
 
 const reasons = [
@@ -469,7 +469,7 @@ export default function ContactPage() {
                     <div className="flex-1">
                       <p className="font-semibold text-lg">Email</p>
                       <p className="text-primary text-lg font-medium">
-                        hello@softarolabs.com
+                        support@softarolabs.com
                       </p>
                       <p className="text-muted-foreground text-sm">
                         We respond within 2 hours
@@ -499,11 +499,11 @@ export default function ContactPage() {
                     <div className="flex-1">
                       <p className="font-semibold text-lg">Address</p>
                       <p className="text-muted-foreground">
-                        123 Tech Street
+                        C117, Ground Floor, 2nd Main Road,
                         <br />
-                        Innovation City, IC 12345
+                        Palm Paradise
                         <br />
-                        United States
+                        India
                       </p>
                     </div>
                   </div>

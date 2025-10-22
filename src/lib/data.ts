@@ -61,40 +61,48 @@ export const services: Service[] = [
 
 export const projects: Project[] = [
   {
-    id: '1',
-    name: 'InnovaMart E-Commerce Platform',
-    description: 'A cutting-edge e-commerce platform with a focus on user experience and scalability.',
-    longDescription: 'InnovaMart is a full-featured e-commerce solution built from the ground up. It includes a custom content management system, a powerful search engine, and a personalized recommendation engine. The platform was designed to handle high traffic and provides a seamless shopping experience across all devices.',
-    imageId: 'project-1',
-    link: '#',
-    tags: ['Web Development', 'UI/UX Design'],
+    id: "1",
+    name: "InnovaMart E-Commerce Platform",
+    description:
+      "A cutting-edge e-commerce platform with a focus on user experience and scalability.",
+    longDescription:
+      "InnovaMart is a full-featured e-commerce solution built from the ground up. It includes a custom content management system, a powerful search engine, and a personalized recommendation engine. The platform was designed to handle high traffic and provides a seamless shopping experience across all devices.",
+    imageId: "project-1",
+    link: "https://ecomnow.org/automated-ecommerce/",
+    tags: ["Web Development", "UI/UX Design"],
   },
   {
-    id: '2',
-    name: 'ConnectSphere Social App',
-    description: 'A mobile application designed to connect people with shared interests.',
-    longDescription: 'ConnectSphere is a social networking app for iOS and Android that helps users discover local events and connect with like-minded individuals. It features real-time chat, event management, and a sophisticated matching algorithm. The UI was designed to be intuitive and engaging to encourage user interaction.',
-    imageId: 'project-2',
-    link: '#',
-    tags: ['Mobile App Development', 'UI/UX Design'],
+    id: "2",
+    name: "ConnectSphere Social App",
+    description:
+      "A mobile application designed to connect people with shared interests.",
+    longDescription:
+      "ConnectSphere is a social networking app for iOS and Android that helps users discover local events and connect with like-minded individuals. It features real-time chat, event management, and a sophisticated matching algorithm. The UI was designed to be intuitive and engaging to encourage user interaction.",
+    imageId: "project-2",
+    link: "https://play.google.com/store/apps/details?id=com.directparameddriver",
+    tags: ["Mobile App Development", "UI/UX Design"],
   },
   {
-    id: '3',
-    name: 'DataViz Analytics Dashboard',
-    description: 'A business intelligence tool for visualizing and analyzing complex datasets.',
-    longDescription: 'DataViz is a web-based analytics dashboard that allows businesses to make data-driven decisions. It connects to multiple data sources and provides interactive charts, graphs, and reports. The backend is built on a scalable cloud architecture to process large volumes of data in real-time.',
-    imageId: 'project-3',
-    link: '#',
-    tags: ['Web Development', 'Cloud Solutions'],
+    id: "3",
+    name: "DataViz Analytics Dashboard",
+    description:
+      "A business intelligence tool for visualizing and analyzing complex datasets.",
+    longDescription:
+      "DataViz is a web-based analytics dashboard that allows businesses to make data-driven decisions. It connects to multiple data sources and provides interactive charts, graphs, and reports. The backend is built on a scalable cloud architecture to process large volumes of data in real-time.",
+    imageId: "project-3",
+    link: "#",
+    tags: ["Web Development", "Cloud Solutions"],
   },
   {
-    id: '4',
-    name: 'QuantumLeap Corporate Site',
-    description: 'A sleek and modern corporate website to showcase brand identity.',
-    longDescription: 'We redesigned the corporate website for QuantumLeap to reflect their innovative brand. The site features a clean, minimalist design, subtle animations, and a fully responsive layout. It was built on a headless CMS to allow for easy content updates by their marketing team.',
-    imageId: 'project-4',
-    link: '#',
-    tags: ['Web Development', 'UI/UX Design'],
+    id: "4",
+    name: "QuantumLeap Corporate Site",
+    description:
+      "A sleek and modern corporate website to showcase brand identity.",
+    longDescription:
+      "We redesigned the corporate website for QuantumLeap to reflect their innovative brand. The site features a clean, minimalist design, subtle animations, and a fully responsive layout. It was built on a headless CMS to allow for easy content updates by their marketing team.",
+    imageId: "project-4",
+    link: "#",
+    tags: ["Web Development", "UI/UX Design"],
   },
 ];
 
@@ -107,6 +115,9 @@ export const blogPosts: BlogPost[] = [
     date: '2024-05-15',
     author: 'Jane Doe',
     imageId: 'blog-post-1',
+    publishedAt: '',
+    readTime: undefined,
+    excerpt: undefined
   },
   {
     id: '2',
@@ -116,6 +127,9 @@ export const blogPosts: BlogPost[] = [
     date: '2024-04-22',
     author: 'John Smith',
     imageId: 'blog-post-2',
+    publishedAt: '',
+    readTime: undefined,
+    excerpt: undefined
   },
   {
     id: '3',
@@ -125,6 +139,9 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-10',
     author: 'Alex Ray',
     imageId: 'blog-post-3',
+    publishedAt: '',
+    readTime: undefined,
+    excerpt: undefined
   },
 ];
 
