@@ -25,6 +25,8 @@ import {
   List,
   MessageSquare,
   ArrowRight,
+  Clock,
+  Wrench,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -73,6 +75,27 @@ const featuredProjects = [
     link: "https://play.google.com/store/apps/details?id=com.pepsicoconsumer.minegocio&hl=en_IN", // Demo link for featured project
   },
 ];
+
+const getStatusBadge = (status: string | undefined) => {
+  switch (status) {
+    case 'in-development':
+      return (
+        <Badge className="bg-orange-500/90 text-white text-xs">
+          <Wrench className="mr-1 h-3 w-3" />
+          In Development
+        </Badge>
+      );
+    case 'coming-soon':
+      return (
+        <Badge className="bg-blue-500/90 text-white text-xs">
+          <Clock className="mr-1 h-3 w-3" />
+          Coming Soon
+        </Badge>
+      );
+    default:
+      return null;
+  }
+};
 
 export default function PortfolioPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -311,11 +334,16 @@ export default function PortfolioPage() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Badge className="bg-primary/90 text-white text-xs">
-                          <Eye className="mr-1 h-3 w-3" />
-                          View
-                        </Badge>
+                      <div className="absolute top-3 left-3 flex gap-2">
+                        {getStatusBadge(project.status)}
+                        {!project.status && (
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <Badge className="bg-primary/90 text-white text-xs">
+                              <Eye className="mr-1 h-3 w-3" />
+                              View
+                            </Badge>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
@@ -341,8 +369,22 @@ export default function PortfolioPage() {
                         ))}
                       </div>
                       <div className="flex items-center text-sm text-muted-foreground mb-4">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        <span>Completed in 2024</span>
+                        {project.status === 'in-development' ? (
+                          <>
+                            <Wrench className="h-4 w-4 mr-1" />
+                            <span>Currently in development</span>
+                          </>
+                        ) : project.status === 'coming-soon' ? (
+                          <>
+                            <Clock className="h-4 w-4 mr-1" />
+                            <span>Coming soon</span>
+                          </>
+                        ) : (
+                          <>
+                            <Calendar className="h-4 w-4 mr-1" />
+                            <span>Completed in 2024</span>
+                          </>
+                        )}
                       </div>
                     </CardContent>
 
@@ -350,23 +392,48 @@ export default function PortfolioPage() {
                       className={`gap-2 ${
                         viewMode === "list" ? "flex-wrap" : ""
                       }`}>
-                      <Link to={`/project/${project.id}`} className="flex-1">
-                        <Button
-                          size="sm"
-                          className="w-full group-hover:shadow-md transition-shadow duration-300">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          View Project
-                        </Button>
-                      </Link>
-                      <Link to={`/project/${project.id}?tab=demo`}>
-                        <Button 
-                          size="sm" 
-                          variant="outlined"
-                          title="View Live Demo"
-                        >
-                          <Eye className="h-4 w-4" />
-                        </Button>
-                      </Link>
+                      {project.status === 'in-development' ? (
+                        <>
+                          <Link to={`/project/${project.id}`} className="flex-1">
+                            <Button
+                              size="sm"
+                              variant="outlined"
+                              className="w-full"
+                            >
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              View Project
+                            </Button>
+                          </Link>
+                          <Button 
+                            size="sm" 
+                            variant="outlined"
+                            disabled
+                            title="Coming Soon"
+                          >
+                            <Clock className="h-4 w-4" />
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Link to={`/project/${project.id}`} className="flex-1">
+                            <Button
+                              size="sm"
+                              className="w-full group-hover:shadow-md transition-shadow duration-300">
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              View Project
+                            </Button>
+                          </Link>
+                          <Link to={`/project/${project.id}?tab=demo`}>
+                            <Button 
+                              size="sm" 
+                              variant="outlined"
+                              title="View Live Demo"
+                            >
+                              <Eye className="h-4 w-4" />
+                            </Button>
+                          </Link>
+                        </>
+                      )}
                     </CardFooter>
                   </div>
                 </Card>

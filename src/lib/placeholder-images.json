@@ -85,6 +85,12 @@
       "imageHint": "GIEO GITA education spiritual"
     },
     {
+      "id": "project-5",
+      "description": "Box Pro Fitness app showing boxing workout interface and training programs",
+      "imageUrl": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib3hpbmclMjBmaXRuZXNzJTIwYXBwfGVufDB8fHx8MTc1ODkyMDk2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "boxing fitness training app"
+    },
+    {
       "id": "blog-post-1",
       "description": "A person typing on a laptop in a cafe",
       "imageUrl": "https://images.unsplash.com/photo-1508780709619-79562169bc64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsYXB0b3AlMjB0eXBpbmd8ZW58MHx8fHwxNzU4OTI4NzA5fDA&ixlib=rb-4.1.0&q=80&w=1080",

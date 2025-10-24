@@ -62,31 +62,31 @@ export const services: Service[] = [
 export const projects: Project[] = [
   {
     id: "1",
-    name: "InnovaMart E-Commerce Platform",
+    name: "Direct Paramed Customer",
     description:
-      "A cutting-edge e-commerce platform with a focus on user experience and scalability.",
+      "An on-demand mobile healthcare platform connecting patients with certified healthcare professionals for home-based medical services.",
     longDescription:
-      "InnovaMart is a full-featured e-commerce solution built from the ground up. It includes a custom content management system, a powerful search engine, and a personalized recommendation engine. The platform was designed to handle high traffic and provides a seamless shopping experience across all devices.",
+      "Direct Paramed Customer is a revolutionary mobile healthcare application that brings medical services directly to patients' homes or offices. The platform connects users with certified allied healthcare professionals for various medical services including phlebotomy (blood draws), drug screening, life insurance medical exams, and health screenings. Key features include on-demand service requests, real-time provider notifications, specimen tracking with shipping details, no-insurance lab ordering options, 24/7 drug screening availability, and customizable health events for organizations. The app helps reduce infection risks by eliminating the need to visit crowded medical facilities, offers same-day service with certified professionals, and provides a comprehensive platform for both individual and business healthcare needs. All services maintain strict privacy protocols and chain of custody requirements for medical specimens.",
     imageId: "project-1",
-    link: "https://ecomnow.org/automated-ecommerce/",
-    tags: ["Web Development", "UI/UX Design"],
+    link: "https://play.google.com/store/apps/details?id=com.directparamed",
+    tags: ["Mobile App Development", "Healthcare", "UI/UX Design"],
   },
   {
     id: "2",
-    name: "ConnectSphere Social App",
+    name: "Direct Paramed Provider",
     description:
-      "A mobile application designed to connect people with shared interests.",
+      "A mobile health solutions app that connects allied healthcare professionals with on-demand medical services.",
     longDescription:
-      "ConnectSphere is a social networking app for iOS and Android that helps users discover local events and connect with like-minded individuals. It features real-time chat, event management, and a sophisticated matching algorithm. The UI was designed to be intuitive and engaging to encourage user interaction.",
+      "Direct Paramed Provider is an innovative mobile application that empowers allied healthcare professionals to work autonomously and provide on-demand medical services. The app brings healthcare directly to patients by connecting certified phlebotomists, medical assistants, and other healthcare professionals with customers who need post-medical diagnostic care and additional allied services. Key features include instant notifications for service requests within a 30-mile radius, transparent pricing and distance information, safety protocols with cancellation options, automatic GPS directions, specimen tracking, and detailed service completion reports. The platform supports various healthcare certifications including phlebotomy, medical assistant, EKG, CPR, and more. Providers undergo a thorough vetting process and receive weekly direct deposit payments, making it an ideal solution for healthcare professionals seeking flexible work opportunities.",
     imageId: "project-2",
     link: "https://play.google.com/store/apps/details?id=com.directparameddriver",
-    tags: ["Mobile App Development", "UI/UX Design"],
+    tags: ["Mobile App Development", "Healthcare", "UI/UX Design"],
   },
   {
     id: "3",
     name: "Dwiggydoo Pet Social Network",
     description:
-      "A comprehensive social networking platform designed specifically for pet owners and animal lovers.",
+      "A comprehensive social networking platform designed specifically for pet owners and animal lovers. Currently in active development.",
     longDescription:
       "Dwiggydoo is an innovative pet social networking platform that connects pet owners worldwide. The platform allows users to create profiles for their pets, connect with other pet owners, and engage in a community dedicated to animal welfare. Key features include pet profile creation, social connections, play scheduling, and earning opportunities through pet-related activities. The platform also includes a unique 'Feed a Dog in Need' feature for non-pet owners to contribute to animal welfare. Built with modern web technologies, it offers seamless user experience with multiple registration options including email, phone, and social media integration.",
     imageId: "project-3",
@@ -97,12 +97,24 @@ export const projects: Project[] = [
     id: "4",
     name: "GIEO GITA Spiritual Organization Website",
     description:
-      "A comprehensive spiritual platform for GIEO GITA organization dedicated to spreading Bhagwad Gita knowledge worldwide.",
+      "A comprehensive spiritual platform for GIEO GITA organization dedicated to spreading Bhagwad Gita knowledge worldwide. Currently in active development.",
     longDescription:
       "GIEO GITA is a spiritual organization founded by Swami Shri Gyananand Ji Maharaj to promote The Bhagwad Gita globally. The website serves as a digital platform showcasing the organization's mission, services, events, and spiritual teachings. It features information about Swami Ji's journey, the organization's milestones including International Gita Mahotsav celebrations, various social services like Gau Sewa, health initiatives, education programs, and nature conservation. The platform connects devotees worldwide and provides access to spiritual resources, virtual tours, and donation facilities.",
     imageId: "project-4",
     link: "https://gieogita.org/",
     tags: ["Web Development", "UI/UX Design", "Content Management"],
+  },
+  {
+    id: "5",
+    name: "Box Pro Fitness",
+    description:
+      "A dedicated boxing fitness app designed to help users start or continue their boxing fitness journey. Currently in active development.",
+    longDescription:
+      "Box Pro Fitness is a comprehensive fitness application created by boxing champions for everyday champions. The app empowers users to achieve their health and fitness goals through structured boxing workouts tailored for all fitness levels, including a 'couch2contender' program. Designed to unlock the inner champion in everyday people, Box Pro Fitness offers personalized training routines, progress tracking, and professional boxing techniques adapted for fitness enthusiasts. The app combines the discipline and intensity of boxing with accessible fitness programming, making it suitable for beginners and experienced fitness enthusiasts alike. Features include customizable workout plans, technique tutorials, progress monitoring, and motivational content designed to help users build strength, endurance, and confidence through boxing-inspired fitness training.",
+    imageId: "project-5",
+    link: "https://boxprotraining.co.uk",
+    tags: ["Mobile App Development", "Health & Fitness", "UI/UX Design"],
+    status: "in-development",
   },
 ];
 

@@ -147,9 +147,9 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-background">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <Badge className="mb-4">What We Offer</Badge>
             <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6">
               Complete Digital Solutions
@@ -160,7 +160,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
             {services.map((service, index) => {
               const serviceImage = PlaceHolderImages.find(
                 (img) => img.id === service.imageId
@@ -168,95 +168,113 @@ export default function ServicesPage() {
               return (
                 <Card
                   key={service.title}
-                  className="group relative overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  className="group relative overflow-hidden border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                  {/* Service Image */}
+                  {/* Compact Service Image Header */}
                   {serviceImage && (
-                    <div className="aspect-video relative overflow-hidden">
+                    <div className="h-32 relative overflow-hidden">
                       <img
                         src={serviceImage.imageUrl}
                         alt={service.title}
                         data-ai-hint={serviceImage.imageHint}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <div className="absolute top-4 left-4">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm">
-                          {serviceIcons[service.title]}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                      <div className="absolute top-3 left-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
+                          {React.cloneElement(serviceIcons[service.title] as React.ReactElement, { 
+                            className: "h-5 w-5 text-white" 
+                          })}
                         </div>
                       </div>
                     </div>
                   )}
 
-                  <CardHeader className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <CardTitle>{service.title}</CardTitle>
-                        <CardDescription>{service.description}</CardDescription>
+                  <CardHeader className="relative z-10 pb-4">
+                    <div className="flex items-center gap-4 mb-3">
+                      {!serviceImage && (
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                          {React.cloneElement(serviceIcons[service.title] as React.ReactElement, { 
+                            className: "h-6 w-6 text-primary" 
+                          })}
+                        </div>
+                      )}
+                      <div className="flex-1">
+                        <CardTitle>
+                          <span className="text-lg group-hover:text-primary transition-colors duration-300">
+                            {service.title}
+                          </span>
+                        </CardTitle>
                       </div>
                     </div>
+                    <CardDescription>
+                      <span className="text-sm leading-relaxed">
+                        {service.description}
+                      </span>
+                    </CardDescription>
                   </CardHeader>
 
-                  <CardContent className="relative z-10">
-                    <div className="mb-6">
-                      <h4 className="font-semibold mb-3 text-lg">
-                        What's Included:
-                      </h4>
-                      <div className="grid grid-cols-1 gap-3">
-                        {service.features
-                          .slice(0, expandedServices[service.title] ? service.features.length : 4)
-                          .map((feature, featureIndex) => (
-                            <div
-                              key={featureIndex}
-                              className="flex items-start space-x-3">
-                              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-muted-foreground leading-relaxed">
-                                {feature}
-                              </span>
-                            </div>
-                          ))}
-                        {service.features.length > 4 && (
-                          <button
-                            onClick={() => toggleServiceFeatures(service.title)}
-                            className="flex items-center gap-1 text-sm text-primary font-medium mt-2 hover:text-primary/80 transition-colors cursor-pointer"
-                          >
-                            {expandedServices[service.title] ? (
-                              <>
-                                <ChevronUp className="h-4 w-4" />
-                                Show less
-                              </>
-                            ) : (
-                              <>
-                                <ChevronDown className="h-4 w-4" />
-                                +{service.features.length - 4} more features
-                              </>
-                            )}
-                          </button>
-                        )}
-                      </div>
+                <CardContent className="relative z-10 pt-0">
+                  <div className="mb-4">
+                    <h4 className="font-semibold mb-3 text-sm text-muted-foreground">
+                      Key Features:
+                    </h4>
+                    <div className="space-y-2">
+                      {service.features
+                        .slice(0, expandedServices[service.title] ? service.features.length : 3)
+                        .map((feature, featureIndex) => (
+                          <div
+                            key={featureIndex}
+                            className="flex items-start space-x-2">
+                            <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                            <span className="text-xs text-muted-foreground leading-relaxed">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      {service.features.length > 3 && (
+                        <button
+                          onClick={() => toggleServiceFeatures(service.title)}
+                          className="flex items-center gap-1 text-xs text-primary font-medium mt-2 hover:text-primary/80 transition-colors cursor-pointer"
+                        >
+                          {expandedServices[service.title] ? (
+                            <>
+                              <ChevronUp className="h-3 w-3" />
+                              Show less
+                            </>
+                          ) : (
+                            <>
+                              <ChevronDown className="h-3 w-3" />
+                              +{service.features.length - 3} more
+                            </>
+                          )}
+                        </button>
+                      )}
                     </div>
+                  </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link to="/contact" className="flex-1">
-                        <Button className="w-full group-hover:shadow-lg transition-shadow duration-300">
-                          Get Started
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        </Button>
-                      </Link>
-                      <Button 
-                        variant="outlined" 
-                        className="flex-1"
-                        onClick={() => {
-                          const processSection = document.getElementById('process-section');
-                          processSection?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        Learn More
+                  <div className="flex gap-2">
+                    <Link to="/contact" className="flex-1">
+                      <Button size="sm" className="w-full text-xs">
+                        Get Started
+                        <ArrowRight className="ml-1 h-3 w-3" />
                       </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </Link>
+                    <Button 
+                      size="sm"
+                      variant="outlined" 
+                      className="flex-1 text-xs"
+                      onClick={() => {
+                        const processSection = document.getElementById('process-section');
+                        processSection?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
               );
             })}
           </div>
@@ -277,24 +295,22 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {processSteps.map((step, index) => (
-              <Card
+              <div
                 key={index}
-                className="text-center border-none shadow-lg bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <CardHeader>
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10">
-                    {step.icon}
-                  </div>
-                  <div className="text-6xl font-bold text-primary/20 mb-2">
-                    {step.step}
-                  </div>
-                  <CardTitle>{step.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>{step.description}</CardDescription>
-                </CardContent>
-              </Card>
+                className="text-center p-4 rounded-lg border bg-card hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+                <div className="flex items-center justify-center h-8 w-8 mx-auto mb-2 rounded-lg bg-primary/10">
+                  {React.cloneElement(step.icon, { className: "h-4 w-4 text-primary" })}
+                </div>
+                <div className="text-lg font-bold text-primary/40 mb-1">
+                  {step.step}
+                </div>
+                <h3 className="font-semibold text-sm mb-2">{step.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>

@@ -16,6 +16,7 @@ export interface Project {
   imageId: string;
   link: string;
   tags: string[];
+  status?: 'completed' | 'in-development' | 'coming-soon';
 }
 
 export interface BlogPost {

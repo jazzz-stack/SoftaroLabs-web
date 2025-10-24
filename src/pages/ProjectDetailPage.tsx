@@ -108,16 +108,21 @@ export default function ProjectDetailPage() {
   const tabFromUrl = searchParams.get('tab') as 'overview' | 'demo' | 'casestudy' | null;
   const [activeTab, setActiveTab] = useState<'overview' | 'demo' | 'casestudy'>(tabFromUrl || 'overview');
   
-  useEffect(() => {
-    if (tabFromUrl) {
-      setActiveTab(tabFromUrl);
-    }
-  }, [tabFromUrl]);
-  
   // Find project from either regular projects or featured projects
   const regularProject = projects.find(p => p.id === id);
   const featuredProject = featuredProjectsData.find(p => p.id === id);
   const project = featuredProject || regularProject;
+  
+  useEffect(() => {
+    if (tabFromUrl) {
+      // If trying to access demo tab for in-development project, redirect to overview
+      if (tabFromUrl === 'demo' && (project as any)?.status === 'in-development') {
+        setActiveTab('overview');
+      } else {
+        setActiveTab(tabFromUrl);
+      }
+    }
+  }, [tabFromUrl, project]);
 
   if (!project) {
     return (
@@ -195,8 +200,9 @@ export default function ProjectDetailPage() {
             </Button>
             <Button
               variant={activeTab === 'demo' ? 'default' : 'secondary'}
-              onClick={() => setActiveTab('demo')}
-              className="bg-white/20 text-white border-white/30 hover:bg-white/30"
+              onClick={() => (project as any)?.status !== 'in-development' && setActiveTab('demo')}
+              disabled={(project as any)?.status === 'in-development'}
+              className="bg-white/20 text-white border-white/30 hover:bg-white/30 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Play className="mr-2 h-4 w-4" />
               Live Demo
@@ -318,19 +324,42 @@ export default function ProjectDetailPage() {
                         </div>
                       </div>
                       <div className="pt-4">
-                        <Button 
-                          className="w-full mb-3"
-                          onClick={() => window.open(project.link, '_blank')}
-                        >
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          View Live Site
-                        </Button>
-                        <Link to="/contact">
-                          <Button variant="outlined" className="w-full">
-                            <MessageSquare className="mr-2 h-4 w-4" />
-                            Start Similar Project
-                          </Button>
-                        </Link>
+                        <div className="flex flex-col gap-3">
+                          {(project as any).status === 'in-development' ? (
+                            <>
+                              <Button 
+                                className="w-full"
+                                disabled
+                                variant="outlined"
+                              >
+                                <ExternalLink className="mr-2 h-4 w-4" />
+                                Coming Soon
+                              </Button>
+                              <Link to="/contact">
+                                <Button variant="outlined" className="w-full">
+                                  <MessageSquare className="mr-2 h-4 w-4" />
+                                  Start Similar Project
+                                </Button>
+                              </Link>
+                            </>
+                          ) : (
+                            <>
+                              <Button 
+                                className="w-full"
+                                onClick={() => window.open(project.link, '_blank')}
+                              >
+                                <ExternalLink className="mr-2 h-4 w-4" />
+                                View Live
+                              </Button>
+                              <Link to="/contact">
+                                <Button variant="outlined" className="w-full">
+                                  <MessageSquare className="mr-2 h-4 w-4" />
+                                  Start Similar Project
+                                </Button>
+                              </Link>
+                            </>
+                          )}
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
