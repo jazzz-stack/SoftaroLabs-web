@@ -74,15 +74,15 @@
     },
     {
       "id": "project-3",
-      "description": "Screenshot of a data visualization platform",
-      "imageUrl": "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGF0YSUyMHZpc3VhbGl6YXRpb258ZW58MHx8fHwxNzU4ODk1NDQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "data visualization"
+      "description": "Dwiggydoo pet social networking platform homepage",
+      "imageUrl": "https://dwiggydoo.com/public/uploads/all/187/home_img.png",
+      "imageHint": "pet social network app"
     },
     {
       "id": "project-4",
-      "description": "Screenshot of a corporate landing page with clean design",
-      "imageUrl": "https://images.unsplash.com/photo-1609874939213-2ca533ba4ad2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx3ZWJzaXRlJTIwbGFuZGluZ3xlbnwwfHx8fDE3NTg5NDk1ODl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "website landing"
+      "description": "GIEO GITA spiritual organization website showcasing education and spiritual activities",
+      "imageUrl": "https://gieogita.org/wp-content/uploads/2023/01/education.jpg",
+      "imageHint": "GIEO GITA education spiritual"
     },
     {
       "id": "blog-post-1",

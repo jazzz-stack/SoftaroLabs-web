@@ -31,9 +31,10 @@ import { Link } from "react-router-dom";
 const categories = [
   "All",
   "Web Development",
-  "Mobile App",
+  "Mobile App Development",
   "UI/UX Design",
-  "Cloud Solutions",
+  "Social Networking",
+  "Content Management",
 ];
 
 const stats = [
@@ -59,15 +60,17 @@ const featuredProjects = [
     impact: "300% increase in operational efficiency",
     category: "Web Development",
     featured: true,
+    link: "#demo", // Demo link for featured project
   },
   {
     id: "featured-2",
-    name: "Mobile Banking App",
+    name: "MiNegocio+ B2B Platform",
     description:
-      "Secure and intuitive banking application with biometric authentication",
-    impact: "2M+ active users worldwide",
+      "B2B ordering platform enabling businesses to streamline procurement with personalized offers",
+    impact: "1M+ downloads and 40% reduction in procurement costs",
     category: "Mobile App",
     featured: true,
+    link: "https://play.google.com/store/apps/details?id=com.pepsicoconsumer.minegocio&hl=en_IN", // Demo link for featured project
   },
 ];
 
@@ -83,9 +86,7 @@ export default function PortfolioPage() {
       ? projects
       : projects.filter((project) =>
           project.tags.some((tag) =>
-            tag
-              .toLowerCase()
-              .includes(selectedCategory.toLowerCase().replace(" ", ""))
+            tag.toLowerCase() === selectedCategory.toLowerCase()
           )
         );
 
@@ -206,14 +207,18 @@ export default function PortfolioPage() {
 
                   <CardContent className="p-6">
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button className="flex-1 group-hover:shadow-lg transition-shadow duration-300">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        View Case Study
-                      </Button>
-                      <Button variant="outlined" className="flex-1">
-                        <Eye className="mr-2 h-4 w-4" />
-                        Live Demo
-                      </Button>
+                      <Link to={`/project/${project.id}`} className="flex-1">
+                        <Button className="w-full group-hover:shadow-lg transition-shadow duration-300">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          View Case Study
+                        </Button>
+                      </Link>
+                      <Link to={`/project/${project.id}?tab=demo`} className="flex-1">
+                        <Button variant="outlined" className="w-full">
+                          <Eye className="mr-2 h-4 w-4" />
+                          Live Demo
+                        </Button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>
@@ -345,15 +350,23 @@ export default function PortfolioPage() {
                       className={`gap-2 ${
                         viewMode === "list" ? "flex-wrap" : ""
                       }`}>
-                      <Button
-                        size="sm"
-                        className="flex-1 group-hover:shadow-md transition-shadow duration-300">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        View Project
-                      </Button>
-                      <Button size="sm" variant="outlined">
-                        <Github className="h-4 w-4" />
-                      </Button>
+                      <Link to={`/project/${project.id}`} className="flex-1">
+                        <Button
+                          size="sm"
+                          className="w-full group-hover:shadow-md transition-shadow duration-300">
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          View Project
+                        </Button>
+                      </Link>
+                      <Link to={`/project/${project.id}?tab=demo`}>
+                        <Button 
+                          size="sm" 
+                          variant="outlined"
+                          title="View Live Demo"
+                        >
+                          <Eye className="h-4 w-4" />
+                        </Button>
+                      </Link>
                     </CardFooter>
                   </div>
                 </Card>

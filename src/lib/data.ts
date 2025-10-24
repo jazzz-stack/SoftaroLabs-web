@@ -84,25 +84,25 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    name: "DataViz Analytics Dashboard",
+    name: "Dwiggydoo Pet Social Network",
     description:
-      "A business intelligence tool for visualizing and analyzing complex datasets.",
+      "A comprehensive social networking platform designed specifically for pet owners and animal lovers.",
     longDescription:
-      "DataViz is a web-based analytics dashboard that allows businesses to make data-driven decisions. It connects to multiple data sources and provides interactive charts, graphs, and reports. The backend is built on a scalable cloud architecture to process large volumes of data in real-time.",
+      "Dwiggydoo is an innovative pet social networking platform that connects pet owners worldwide. The platform allows users to create profiles for their pets, connect with other pet owners, and engage in a community dedicated to animal welfare. Key features include pet profile creation, social connections, play scheduling, and earning opportunities through pet-related activities. The platform also includes a unique 'Feed a Dog in Need' feature for non-pet owners to contribute to animal welfare. Built with modern web technologies, it offers seamless user experience with multiple registration options including email, phone, and social media integration.",
     imageId: "project-3",
-    link: "#",
-    tags: ["Web Development", "Cloud Solutions"],
+    link: "https://www.dwiggydoo.com/",
+    tags: ["Web Development", "Social Networking", "Mobile App Development"],
   },
   {
     id: "4",
-    name: "QuantumLeap Corporate Site",
+    name: "GIEO GITA Spiritual Organization Website",
     description:
-      "A sleek and modern corporate website to showcase brand identity.",
+      "A comprehensive spiritual platform for GIEO GITA organization dedicated to spreading Bhagwad Gita knowledge worldwide.",
     longDescription:
-      "We redesigned the corporate website for QuantumLeap to reflect their innovative brand. The site features a clean, minimalist design, subtle animations, and a fully responsive layout. It was built on a headless CMS to allow for easy content updates by their marketing team.",
+      "GIEO GITA is a spiritual organization founded by Swami Shri Gyananand Ji Maharaj to promote The Bhagwad Gita globally. The website serves as a digital platform showcasing the organization's mission, services, events, and spiritual teachings. It features information about Swami Ji's journey, the organization's milestones including International Gita Mahotsav celebrations, various social services like Gau Sewa, health initiatives, education programs, and nature conservation. The platform connects devotees worldwide and provides access to spiritual resources, virtual tours, and donation facilities.",
     imageId: "project-4",
-    link: "#",
-    tags: ["Web Development", "UI/UX Design"],
+    link: "https://gieogita.org/",
+    tags: ["Web Development", "UI/UX Design", "Content Management"],
   },
 ];
 
