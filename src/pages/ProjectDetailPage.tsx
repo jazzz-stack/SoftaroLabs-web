@@ -5,6 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { trackProjectView } from '@/components/GoogleAnalytics';
 import { 
   ArrowLeft, 
   ExternalLink, 
@@ -121,6 +122,11 @@ export default function ProjectDetailPage() {
       } else {
         setActiveTab(tabFromUrl);
       }
+    }
+    
+    // Track project view when component mounts and project is available
+    if (project) {
+      trackProjectView(project.id);
     }
   }, [tabFromUrl, project]);
 

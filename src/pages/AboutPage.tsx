@@ -339,33 +339,38 @@ export default function AboutPage() {
                   className="group relative text-center overflow-hidden border-none bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 hover:rotate-1 transform-gpu">
                   {/* Enhanced gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                  
+
                   {/* Animated border */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 transition-all duration-700 blur-sm"></div>
-                  
+
                   {/* Enhanced image section */}
                   <div className="relative pt-8 pb-4">
                     <div className="relative mx-auto mb-6 w-36 h-36">
                       {/* Animated background ring */}
                       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 group-hover:rotate-180"></div>
-                      
+
                       {/* Main image */}
                       <img
-                        src={`/assets/image/${member.imageId}.png`}
+                        src={ memberImage?.imageUrl}
                         alt={member.name}
                         className="relative z-10 w-36 h-36 rounded-full border-4 border-white shadow-2xl object-cover mx-auto transition-all duration-700 group-hover:border-primary/50 group-hover:scale-105"
-                        onLoad={() => console.log(`✅ Image loaded: ${member.name}`)}
+                        onLoad={() =>
+                          console.log(`✅ Image loaded: ${member.name}`)
+                        }
                         onError={(e) => {
                           console.error(`❌ Image failed: ${member.name}`);
-                          e.currentTarget.src = `https://placehold.co/144x144/4f46e5/ffffff?text=${member.name.split(' ').map(n => n[0]).join('')}`;
+                          e.currentTarget.src = `https://placehold.co/144x144/4f46e5/ffffff?text=${member.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}`;
                         }}
                       />
-                      
+
                       {/* Enhanced star badge */}
                       <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 shadow-lg">
                         <Star className="h-5 w-5 text-white fill-current" />
                       </div>
-                      
+
                       {/* Floating particles effect */}
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-1000">
                         <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
@@ -386,11 +391,9 @@ export default function AboutPage() {
 
                   <CardContent className="relative z-10 px-6 pb-8">
                     <div className="text-sm leading-relaxed mb-6 group-hover:text-foreground/80 transition-colors duration-300">
-                      <CardDescription>
-                        {member.bio}
-                      </CardDescription>
+                      <CardDescription>{member.bio}</CardDescription>
                     </div>
-                    
+
                     {/* Enhanced social buttons */}
                     <div className="flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                       <Button

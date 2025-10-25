@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { trackJobApplication } from '@/components/GoogleAnalytics';
 import {
   MapPin,
   Clock,
@@ -172,6 +173,11 @@ const JobApplicationPage: React.FC = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       setSubmitSuccess(true);
       setCurrentStep(3);
+      
+      // Track job application submission
+      if (job) {
+        trackJobApplication(job.title);
+      }
     } catch (error) {
       console.error('Application submission failed:', error);
     } finally {

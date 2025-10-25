@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import CommunicationModal from '@/components/ui/CommunicationModal';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { contactApi, ContactFormData, ContactResponse } from '@/services/contactApi';
+import { trackContactFormSubmission, trackServiceInquiry } from '@/components/GoogleAnalytics';
 import { 
   Mail, 
   Phone, 
@@ -132,6 +133,15 @@ export default function ContactPage() {
       if (response.success) {
         setSubmitted(true);
         setSubmitSuccess(response.message);
+        
+        // Track successful contact form submission
+        trackContactFormSubmission();
+        
+        // Track service inquiry if service was selected
+        if (formData.service) {
+          trackServiceInquiry(formData.service);
+        }
+        
         setFormData({ name: '', email: '', company: '', service: '', budget: '', message: '' });
         
         // Reset success state after 10 seconds

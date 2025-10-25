@@ -2,8 +2,10 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import SEO from '@/components/SEO';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { services, projects } from '@/lib/data';
+import { organizationSchema, websiteSchema, localBusinessSchema } from '@/lib/schemas';
 import { 
   ArrowRight, 
   Code, 
@@ -102,8 +104,38 @@ const testimonials = [
 export default function HomePage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
+  // Combined structured data for homepage
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      organizationSchema,
+      websiteSchema,
+      localBusinessSchema
+    ]
+  };
+
   return (
     <div className="flex flex-col">
+      <SEO
+        title="Softaro Labs - Leading Software Development Company | Web & Mobile App Development"
+        description="Transform your business with Softaro Labs' expert software development services. We specialize in web development, mobile apps, UI/UX design, and cloud solutions. Get a free consultation today!"
+        keywords={[
+          'software development company',
+          'web development services',
+          'mobile app development',
+          'UI UX design agency',
+          'cloud solutions provider',
+          'React development',
+          'Node.js development',
+          'custom software development',
+          'digital transformation',
+          'Softaro Labs'
+        ]}
+        url="https://softarolabs.com"
+        type="website"
+        schema={combinedSchema}
+      />
+      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {heroImage && (
