@@ -1,4 +1,4 @@
-import type { Service, Project, BlogPost, TeamMember } from './types';
+import type { Service, Project, BlogPost, TeamMember, JobPosting, CompanyBenefit, CompanyValue } from './types';
 
 export const services: Service[] = [
   {
@@ -186,4 +186,268 @@ export const teamMembers: TeamMember[] = [
     bio: 'Marcus is the mastermind behind our scalable and resilient infrastructure. He specializes in automation, CI/CD, and cloud security, ensuring that our clients\' applications run smoothly and securely 24/7.',
     imageId: 'team-member-4',
   },
+];
+
+export const jobPostings: JobPosting[] = [
+  {
+    id: '1',
+    title: 'Senior Full Stack Developer',
+    department: 'Engineering',
+    location: 'Remote / San Francisco, CA',
+    type: 'full-time',
+    experience: '5+ years',
+    description: 'Are you passionate about building exceptional digital experiences that impact millions of users? Join our world-class engineering team as a Senior Full Stack Developer and help shape the future of technology. You\'ll work on cutting-edge projects using the latest technologies, collaborate with brilliant minds, and have the autonomy to make technical decisions that drive our products forward. This role offers unlimited growth potential, challenging problems to solve, and the opportunity to mentor the next generation of developers. We\'re looking for someone who thrives in a fast-paced environment, loves clean code, and is excited about building scalable solutions that make a real difference.',
+    requirements: [
+      'Bachelor\'s degree in Computer Science or equivalent practical experience',
+      '5+ years of hands-on experience in full-stack development with proven track record',
+      'Expert-level proficiency in React, Node.js, TypeScript, and modern JavaScript frameworks',
+      'Extensive experience with cloud platforms (AWS, GCP, or Azure) and microservices architecture',
+      'Deep understanding of database design, optimization, and both SQL and NoSQL systems',
+      'Proven experience with CI/CD pipelines, Docker, Kubernetes, and DevOps best practices',
+      'Strong system design skills and ability to architect scalable solutions',
+      'Excellent problem-solving abilities and passion for writing clean, maintainable code',
+      'Outstanding communication skills and experience mentoring junior developers'
+    ],
+    responsibilities: [
+      'Architect and develop highly scalable, secure web applications serving millions of users',
+      'Lead technical decision-making and drive best practices across the engineering team',
+      'Collaborate closely with product, design, and data teams to deliver exceptional user experiences',
+      'Write clean, well-tested, and thoroughly documented code following industry standards',
+      'Mentor junior developers, conduct code reviews, and contribute to team knowledge sharing',
+      'Stay at the forefront of technology trends and continuously improve our tech stack',
+      'Participate in on-call rotations and ensure high availability of production systems',
+      'Drive technical initiatives that improve developer productivity and system performance'
+    ],
+    postedDate: '2024-10-20',
+    applicationDeadline: '2024-11-30',
+    featured: true
+  },
+  {
+    id: '2',
+    title: 'UI/UX Designer',
+    department: 'Design',
+    location: 'Remote / New York, NY',
+    type: 'full-time',
+    experience: '3+ years',
+    description: 'Transform ideas into beautiful, intuitive experiences that users love! As a UI/UX Designer at Softaro Labs, you\'ll be at the heart of product innovation, crafting digital experiences that seamlessly blend aesthetics with functionality. You\'ll work alongside passionate product managers, engineers, and fellow designers to solve complex user problems through thoughtful design. This role offers the perfect opportunity to shape user journeys, create design systems that scale, and see your work impact thousands of users daily. We\'re seeking a creative problem-solver who understands that great design is not just about how it looks, but how it works. Join us in building products that users don\'t just use, but truly enjoy.',
+    requirements: [
+      'Bachelor\'s degree in Design, Human-Computer Interaction, or equivalent experience',
+      '3+ years of proven UI/UX design experience with a strong portfolio of digital products',
+      'Expert proficiency in Figma, Sketch, Adobe Creative Suite, and modern design tools',
+      'Exceptional portfolio demonstrating user-centered design thinking and problem-solving',
+      'Experience building and maintaining comprehensive design systems and component libraries',
+      'Deep understanding of responsive design, accessibility standards (WCAG), and usability principles',
+      'Knowledge of HTML/CSS and ability to collaborate effectively with developers',
+      'Experience with user research methodologies, usability testing, and data-driven design decisions',
+      'Strong presentation skills and ability to articulate design decisions to stakeholders'
+    ],
+    responsibilities: [
+      'Lead end-to-end design process from user research to final implementation',
+      'Create wireframes, interactive prototypes, and pixel-perfect high-fidelity designs',
+      'Conduct user research, interviews, and usability testing to validate design decisions',
+      'Build and evolve our design system to ensure consistency across all products',
+      'Collaborate closely with engineering teams to ensure accurate design implementation',
+      'Present design concepts and rationale to stakeholders and executive leadership',
+      'Analyze user behavior data and feedback to continuously improve user experiences',
+      'Stay current with design trends, tools, and best practices in the industry',
+      'Mentor junior designers and contribute to the growth of our design culture'
+    ],
+    postedDate: '2024-10-18',
+    featured: true
+  },
+  {
+    id: '3',
+    title: 'DevOps Engineer',
+    department: 'Engineering',
+    location: 'Remote / Austin, TX',
+    type: 'full-time',
+    experience: '4+ years',
+    description: 'Build the backbone of innovation! As a DevOps Engineer at Softaro Labs, you\'ll be the architect of our infrastructure, ensuring our applications run flawlessly at scale. You\'ll work with cutting-edge cloud technologies, automate everything that can be automated, and create the reliable foundation that enables our development teams to ship features faster and more confidently. This role is perfect for someone who loves solving complex infrastructure challenges, optimizing system performance, and implementing security best practices. You\'ll have the opportunity to work with the latest tools in the DevOps ecosystem, contribute to our platform\'s evolution, and play a crucial role in our company\'s technical success. Join us in building infrastructure that scales with our ambitions.',
+    requirements: [
+      'Bachelor\'s degree in Computer Science, Engineering, or equivalent hands-on experience',
+      '4+ years of DevOps, Site Reliability Engineering, or Infrastructure experience',
+      'Deep expertise with AWS, Docker, Kubernetes, and container orchestration platforms',
+      'Proficiency in Infrastructure as Code using Terraform, CloudFormation, or similar tools',
+      'Extensive experience with CI/CD pipelines using Jenkins, GitLab CI, GitHub Actions, or similar',
+      'Strong knowledge of monitoring, logging, and alerting tools (Prometheus, Grafana, ELK stack)',
+      'Advanced scripting skills in Python, Bash, Go, or similar programming languages',
+      'Experience with security best practices, compliance standards, and disaster recovery',
+      'Excellent troubleshooting skills and experience with high-availability systems'
+    ],
+    responsibilities: [
+      'Design, implement, and maintain robust CI/CD pipelines for fast, reliable deployments',
+      'Manage and optimize cloud infrastructure across multiple environments and regions',
+      'Implement comprehensive monitoring, alerting, and logging systems for proactive issue detection',
+      'Ensure security compliance, implement best practices, and maintain disaster recovery procedures',
+      'Troubleshoot complex production issues and optimize system performance and cost',
+      'Collaborate with development teams to improve deployment processes and system reliability',
+      'Automate repetitive tasks and implement self-healing infrastructure solutions',
+      'Lead infrastructure migrations, capacity planning, and technology evaluations',
+      'Participate in on-call rotations and incident response procedures'
+    ],
+    postedDate: '2024-10-15'
+  },
+  {
+    id: '4',
+    title: 'Product Manager',
+    department: 'Product',
+    location: 'Remote / Seattle, WA',
+    type: 'full-time',
+    experience: '5+ years',
+    description: 'Shape the future of our products and drive innovation that matters! As a Product Manager at Softaro Labs, you\'ll be the strategic leader who transforms market insights into breakthrough products. You\'ll work at the intersection of business, technology, and user experience, making critical decisions that impact our product roadmap and company direction. This role offers the opportunity to lead cross-functional teams, analyze market trends, and build products that solve real-world problems for our users. You\'ll collaborate with engineering, design, marketing, and executive teams to bring your product vision to life. We\'re looking for a strategic thinker who can balance user needs with business objectives, communicate effectively across all levels of the organization, and thrive in a fast-paced, data-driven environment.',
+    requirements: [
+      'Bachelor\'s degree in Business, Engineering, Computer Science, or related field with MBA preferred',
+      '5+ years of product management experience with successful product launches and growth metrics',
+      'Proven experience with Agile/Scrum methodologies and working closely with engineering teams',
+      'Strong analytical skills with experience using data to drive product decisions and measure success',
+      'Exceptional communication, presentation, and stakeholder management skills',
+      'Experience with product analytics tools (Mixpanel, Amplitude, Google Analytics) and A/B testing',
+      'Technical background or demonstrated ability to work effectively with engineering teams',
+      'Experience with user research, customer interviews, and translating insights into product requirements',
+      'Track record of managing complex product roadmaps and competing priorities'
+    ],
+    responsibilities: [
+      'Define and execute product vision, strategy, and roadmap aligned with business objectives',
+      'Conduct market research, competitive analysis, and user research to identify opportunities',
+      'Collaborate with engineering teams to translate product requirements into technical specifications',
+      'Manage product backlog, prioritization, and sprint planning with development teams',
+      'Analyze product metrics, user feedback, and market data to optimize product performance',
+      'Coordinate product launches, go-to-market strategies, and cross-functional initiatives',
+      'Present product updates, roadmaps, and strategic recommendations to executive leadership',
+      'Work closely with design teams to ensure exceptional user experience and product usability',
+      'Monitor competitive landscape and industry trends to maintain product competitiveness'
+    ],
+    postedDate: '2024-10-10'
+  },
+  {
+    id: '5',
+    title: 'Frontend Developer (Internship)',
+    department: 'Engineering',
+    location: 'Remote / On-site',
+    type: 'internship',
+    experience: 'Entry level',
+    description: 'Launch your tech career with hands-on experience at a cutting-edge company! Our Frontend Developer Internship program is designed to accelerate your growth and provide real-world experience building modern web applications. You\'ll work alongside senior developers, contribute to actual projects that impact our users, and learn industry best practices from day one. This internship offers mentorship, learning opportunities, and the chance to work with the latest technologies in a supportive, collaborative environment. You\'ll gain experience with React, TypeScript, modern development tools, and agile methodologies while building a portfolio of work that showcases your skills. We\'re looking for passionate, curious individuals who are eager to learn, contribute meaningfully to our team, and potentially transition to a full-time role upon graduation.',
+    requirements: [
+      'Currently pursuing or recently completed Bachelor\'s degree in Computer Science, Web Development, or related field',
+      'Solid foundation in HTML5, CSS3, JavaScript (ES6+), and responsive web design principles',
+      'Familiarity with React, Vue.js, Angular, or similar modern frontend frameworks',
+      'Basic understanding of Git version control, command line tools, and development workflows',
+      'Strong problem-solving skills, attention to detail, and passion for creating great user experiences',
+      'Excellent communication skills and ability to work collaboratively in a team environment',
+      'Eagerness to learn new technologies, accept feedback, and continuously improve skills',
+      'Portfolio or GitHub projects demonstrating frontend development capabilities',
+      'Available for minimum 3-month internship commitment with potential for extension'
+    ],
+    responsibilities: [
+      'Develop responsive user interface components using React, TypeScript, and modern CSS frameworks',
+      'Participate in daily standups, sprint planning, and code reviews with the development team',
+      'Learn and apply modern frontend development practices, testing methodologies, and performance optimization',
+      'Contribute to documentation, user guides, and technical specifications for developed features',
+      'Work on real client projects under mentorship, gaining exposure to production-level development',
+      'Attend technical workshops, training sessions, and lunch-and-learn presentations',
+      'Collaborate with design and backend teams to implement pixel-perfect, functional user interfaces',
+      'Participate in usability testing sessions and implement feedback to improve user experience',
+      'Present completed projects and learning outcomes to the team and stakeholders'
+    ],
+    postedDate: '2024-10-25',
+    applicationDeadline: '2024-12-15'
+  }
+];
+
+export const companyBenefits: CompanyBenefit[] = [
+  {
+    id: '1',
+    title: 'Health & Wellness',
+    description: 'Comprehensive health insurance, dental, vision, and mental health support',
+    icon: 'Heart',
+    category: 'health'
+  },
+  {
+    id: '2',
+    title: 'Flexible Work',
+    description: 'Remote-first culture with flexible hours and work-life balance',
+    icon: 'Clock',
+    category: 'lifestyle'
+  },
+  {
+    id: '3',
+    title: 'Professional Growth',
+    description: 'Learning stipend, conference attendance, and career development programs',
+    icon: 'TrendingUp',
+    category: 'professional'
+  },
+  {
+    id: '4',
+    title: 'Competitive Salary',
+    description: 'Market-competitive salaries with equity participation',
+    icon: 'DollarSign',
+    category: 'financial'
+  },
+  {
+    id: '5',
+    title: 'Unlimited PTO',
+    description: 'Take the time you need to recharge and spend with family',
+    icon: 'Calendar',
+    category: 'time-off'
+  },
+  {
+    id: '6',
+    title: 'Tech Stipend',
+    description: 'Annual budget for latest equipment and development tools',
+    icon: 'Laptop',
+    category: 'professional'
+  },
+  {
+    id: '7',
+    title: 'Team Events',
+    description: 'Regular team building activities, retreats, and social events',
+    icon: 'Users',
+    category: 'lifestyle'
+  },
+  {
+    id: '8',
+    title: 'Retirement Planning',
+    description: '401(k) matching and financial planning resources',
+    icon: 'PiggyBank',
+    category: 'financial'
+  }
+];
+
+export const companyValues: CompanyValue[] = [
+  {
+    id: '1',
+    title: 'Innovation First',
+    description: 'We embrace cutting-edge technologies and creative solutions to solve complex problems',
+    icon: 'Lightbulb'
+  },
+  {
+    id: '2',
+    title: 'Quality Craftsmanship',
+    description: 'Every line of code, every design element is crafted with attention to detail',
+    icon: 'Award'
+  },
+  {
+    id: '3',
+    title: 'Collaborative Spirit',
+    description: 'We believe the best solutions come from diverse perspectives working together',
+    icon: 'Users'
+  },
+  {
+    id: '4',
+    title: 'Continuous Learning',
+    description: 'We invest in our team\'s growth and encourage exploration of new technologies',
+    icon: 'BookOpen'
+  },
+  {
+    id: '5',
+    title: 'Customer Impact',
+    description: 'Everything we do is focused on creating value and positive impact for our clients',
+    icon: 'Target'
+  },
+  {
+    id: '6',
+    title: 'Work-Life Balance',
+    description: 'We support our team\'s well-being and encourage a healthy work-life integration',
+    icon: 'Heart'
+  }
 ];

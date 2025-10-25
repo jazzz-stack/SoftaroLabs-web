@@ -39,3 +39,55 @@ export interface TeamMember {
   bio: string;
   imageId: string;
 }
+
+export interface JobPosting {
+  id: string;
+  title: string;
+  department: string;
+  location: string;
+  type: 'full-time' | 'part-time' | 'contract' | 'internship';
+  experience: string;
+  description: string;
+  requirements: string[];
+  responsibilities: string[];
+  benefits?: string[];
+  salaryRange?: string;
+  postedDate: string;
+  applicationDeadline?: string;
+  featured?: boolean;
+}
+
+export interface CompanyBenefit {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  category: 'health' | 'financial' | 'professional' | 'lifestyle' | 'time-off';
+}
+
+export interface CompanyValue {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface JobApplication {
+  jobId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  location: string;
+  linkedinUrl?: string;
+  portfolioUrl?: string;
+  coverLetter: string;
+  experience: string;
+  availability: string;
+  expectedSalary?: string;
+  workAuthorization: 'yes' | 'no' | 'sponsor';
+  willingToRelocate: 'yes' | 'no' | 'maybe';
+  resumeFile?: File;
+  portfolioFile?: File;
+  additionalDocuments?: File[];
+}

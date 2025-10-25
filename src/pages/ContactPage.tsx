@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
+import CommunicationModal from '@/components/ui/CommunicationModal';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { contactApi, ContactFormData, ContactResponse } from '@/services/contactApi';
 import { 
@@ -105,6 +106,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string>('');
   const [submitSuccess, setSubmitSuccess] = useState<string>('');
+  const [isCommModalOpen, setIsCommModalOpen] = useState(false);
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -195,13 +197,18 @@ export default function ContactPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6">
+              className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6"
+              onClick={() => {
+                const contactFormSection = document.querySelector('form');
+                contactFormSection?.scrollIntoView({ behavior: 'smooth' });
+              }}>
               <MessageSquare className="mr-2 h-5 w-5" />
               Start Free Consultation
             </Button>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">
+              className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold"
+              onClick={() => setIsCommModalOpen(true)}>
               <Phone className="mr-2 h-5 w-5" />
               Call Now
             </Button>
@@ -627,6 +634,12 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Communication Modal */}
+      <CommunicationModal 
+        isOpen={isCommModalOpen} 
+        onClose={() => setIsCommModalOpen(false)} 
+      />
     </div>
   );
 }

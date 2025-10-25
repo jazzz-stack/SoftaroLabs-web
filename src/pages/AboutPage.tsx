@@ -8,7 +8,6 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -298,76 +297,118 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge className="mb-4">Our Team</Badge>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6">
+      <section className="py-20 bg-gradient-to-br from-background via-secondary/5 to-background relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 right-10 w-48 h-48 bg-secondary/10 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/5 rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-20">
+            <Badge className="mb-6 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary border-primary/30 shadow-lg">
+              <Users className="mr-2 h-4 w-4" />
+              Our Team
+            </Badge>
+            <h2 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent">
               Meet the Talented Minds
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The passionate individuals who bring innovation to life and make
-              our vision a reality.
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              The passionate individuals who bring innovation to life and make our vision a reality. 
+              Each team member brings unique expertise and creativity to every project.
             </p>
+            
+            {/* Decorative line */}
+            <div className="flex items-center justify-center mt-8">
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent w-32"></div>
+              <Star className="mx-4 h-5 w-5 text-primary" />
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent w-32"></div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-12">
             {teamMembers.map((member, index) => {
               const memberImage = PlaceHolderImages.find(
                 (img) => img.id === member.imageId
               );
+              
               return (
                 <Card
                   key={member.name}
-                  className="group text-center overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <CardHeader className="relative z-10 pb-4">
-                    <div className="relative mx-auto mb-6">
-                      <Avatar className="w-32 h-32 mx-auto border-4 border-white shadow-lg group-hover:border-primary/20 transition-all duration-300">
-                        {memberImage && (
-                          <AvatarImage
-                            src={memberImage.imageUrl}
-                            alt={member.name}
-                            className="object-cover"
-                          />
-                        )}
-                        <AvatarFallback className="text-2xl bg-primary/10 text-primary">
-                          {member.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <Star className="h-4 w-4 text-white" />
+                  className="group relative text-center overflow-hidden border-none bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 hover:rotate-1 transform-gpu">
+                  {/* Enhanced gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                  
+                  {/* Animated border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 transition-all duration-700 blur-sm"></div>
+                  
+                  {/* Enhanced image section */}
+                  <div className="relative pt-8 pb-4">
+                    <div className="relative mx-auto mb-6 w-36 h-36">
+                      {/* Animated background ring */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 group-hover:rotate-180"></div>
+                      
+                      {/* Main image */}
+                      <img
+                        src={`/assets/image/${member.imageId}.png`}
+                        alt={member.name}
+                        className="relative z-10 w-36 h-36 rounded-full border-4 border-white shadow-2xl object-cover mx-auto transition-all duration-700 group-hover:border-primary/50 group-hover:scale-105"
+                        onLoad={() => console.log(`✅ Image loaded: ${member.name}`)}
+                        onError={(e) => {
+                          console.error(`❌ Image failed: ${member.name}`);
+                          e.currentTarget.src = `https://placehold.co/144x144/4f46e5/ffffff?text=${member.name.split(' ').map(n => n[0]).join('')}`;
+                        }}
+                      />
+                      
+                      {/* Enhanced star badge */}
+                      <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 shadow-lg">
+                        <Star className="h-5 w-5 text-white fill-current" />
+                      </div>
+                      
+                      {/* Floating particles effect */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                        <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                        <div className="absolute top-8 right-6 w-1 h-1 bg-secondary rounded-full animate-ping"></div>
+                        <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-primary rounded-full animate-bounce"></div>
                       </div>
                     </div>
+                  </div>
+
+                  <CardHeader className="relative z-10 pb-2 pt-0">
                     <CardTitle>{member.name}</CardTitle>
                     <Badge
                       variant="secondary"
-                      className="mt-2 group-hover:bg-primary/10">
+                      className="mt-3 bg-gradient-to-r from-primary/10 to-secondary/10 group-hover:from-primary/20 group-hover:to-secondary/20 border-primary/20 transition-all duration-300">
                       {member.role}
                     </Badge>
                   </CardHeader>
-                  <CardContent className="relative z-10">
-                    <CardDescription>{member.bio}</CardDescription>
-                    <div className="flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+
+                  <CardContent className="relative z-10 px-6 pb-8">
+                    <div className="text-sm leading-relaxed mb-6 group-hover:text-foreground/80 transition-colors duration-300">
+                      <CardDescription>
+                        {member.bio}
+                      </CardDescription>
+                    </div>
+                    
+                    {/* Enhanced social buttons */}
+                    <div className="flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                       <Button
                         size="sm"
                         variant="ghost"
-                        className="w-10 h-10 p-0">
+                        className="w-10 h-10 p-0 rounded-full bg-primary/10 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
                         <Mail className="h-4 w-4" />
                       </Button>
                       <Button
                         size="sm"
                         variant="ghost"
-                        className="w-10 h-10 p-0">
+                        className="w-10 h-10 p-0 rounded-full bg-secondary/10 hover:bg-secondary hover:text-white transition-all duration-300 hover:scale-110">
                         <Linkedin className="h-4 w-4" />
                       </Button>
                       <Button
                         size="sm"
                         variant="ghost"
-                        className="w-10 h-10 p-0">
+                        className="w-10 h-10 p-0 rounded-full bg-primary/10 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
                         <Twitter className="h-4 w-4" />
                       </Button>
                     </div>
@@ -375,6 +416,28 @@ export default function AboutPage() {
                 </Card>
               );
             })}
+          </div>
+
+          {/* Call to action */}
+          <div className="text-center mt-20">
+            <div className="max-w-md mx-auto">
+              <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-2xl p-8 shadow-xl border border-primary/20 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-lg">
+                    <Users className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
+                <p className="text-muted-foreground mb-6">Want to be part of our amazing team? We're always looking for talented individuals.</p>
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-white rounded-full px-8 py-3 transition-all duration-300 hover:scale-105 shadow-lg w-full">
+                    View Career Opportunities
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
