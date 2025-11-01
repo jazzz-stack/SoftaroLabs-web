@@ -35,6 +35,9 @@ const categories = [
   "Web Development",
   "Mobile App Development",
   "UI/UX Design",
+  "WordPress Development",
+  "Shopify Development", 
+  "Wix Development",
   "Social Networking",
   "Content Management",
 ];

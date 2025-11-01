@@ -20,7 +20,7 @@ import {
   Star
 } from 'lucide-react';
 
-const categories = ['All', 'Web Development', 'Mobile Development', 'UI/UX Design', 'Cloud Solutions', 'Tech Trends'];
+const categories = ['All', 'Web Development', 'Mobile Development', 'UI/UX Design', 'Cloud Solutions', 'WordPress', 'Shopify', 'Wix', 'Tech Trends'];
 
 const featuredPost = {
   title: 'The Future of Web Development: Trends to Watch in 2024',

@@ -21,7 +21,10 @@ import {
   MessageSquare,
   Eye,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Globe,
+  ShoppingCart,
+  Layout
 } from 'lucide-react';
 
 const serviceIcons: { [key: string]: React.ReactNode } = {
@@ -29,6 +32,9 @@ const serviceIcons: { [key: string]: React.ReactNode } = {
   'Mobile App Development': <Smartphone className="h-12 w-12 text-primary" />,
   'UI/UX Design': <Brush className="h-12 w-12 text-primary" />,
   'Cloud Solutions': <Cloud className="h-12 w-12 text-primary" />,
+  'WordPress Development': <Globe className="h-12 w-12 text-primary" />,
+  'Shopify Development': <ShoppingCart className="h-12 w-12 text-primary" />,
+  'Wix Development': <Layout className="h-12 w-12 text-primary" />,
 };
 
 const processSteps = [

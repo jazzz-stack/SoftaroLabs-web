@@ -149,6 +149,24 @@
       "description": "Cloud infrastructure visualization with servers and data connections",
       "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMGluZnJhc3RydWN0dXJlfGVufDB8fHx8MTc1ODkyMDk2NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud infrastructure"
+    },
+    {
+      "id": "service-wordpress",
+      "description": "WordPress dashboard interface showing content management and customization",
+      "imageUrl": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b3JkcHJlc3MlMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzU4OTIwOTY1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wordpress development"
+    },
+    {
+      "id": "service-shopify",
+      "description": "Shopify e-commerce store interface showing products and shopping experience",
+      "imageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBzdG9yZXxlbnwwfHx8fDE3NTg5MjA5NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "shopify ecommerce store"
+    },
+    {
+      "id": "service-wix",
+      "description": "Wix website builder interface showing drag-and-drop design tools",
+      "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwYnVpbGRlcnxlbnwwfHx8fDE3NTg5MjA5NjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wix website builder"
     }
   ]
 }

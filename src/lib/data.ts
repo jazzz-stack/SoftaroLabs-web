@@ -57,6 +57,48 @@ export const services: Service[] = [
       'Cost optimization and monitoring'
     ],
   },
+  {
+    title: 'WordPress Development',
+    description: 'Creating powerful, customizable websites with the world\'s most popular CMS.',
+    longDescription: 'WordPress powers over 40% of all websites worldwide, and we specialize in creating custom WordPress solutions that meet your unique business needs. From simple blogs to complex e-commerce sites, we build scalable, secure, and SEO-optimized WordPress websites that are easy to manage and update.',
+    imageId: 'service-wordpress',
+    features: [
+      'Custom WordPress theme development',
+      'Plugin development and customization',
+      'WooCommerce e-commerce solutions',
+      'WordPress multisite setup and management',
+      'Performance optimization and security',
+      'Content migration and maintenance'
+    ],
+  },
+  {
+    title: 'Shopify Development',
+    description: 'Building high-converting e-commerce stores on the leading platform.',
+    longDescription: 'Shopify is the go-to platform for online retail, and we help businesses create stunning, high-performing e-commerce stores that drive sales. Our Shopify expertise includes custom theme development, app integration, payment gateway setup, and store optimization for maximum conversions.',
+    imageId: 'service-shopify',
+    features: [
+      'Custom Shopify theme design and development',
+      'Shopify Plus enterprise solutions',
+      'Third-party app integration and custom apps',
+      'Payment gateway and shipping setup',
+      'Store migration and data import',
+      'Conversion rate optimization'
+    ],
+  },
+  {
+    title: 'Wix Development',
+    description: 'Professional website creation and customization on the user-friendly Wix platform.',
+    longDescription: 'Wix offers an intuitive platform for website creation, and we help businesses maximize its potential with professional design and advanced customizations. Whether you need a business website, portfolio, or online store, we create polished Wix sites that stand out from template-based competitors.',
+    imageId: 'service-wix',
+    features: [
+      'Custom Wix website design and development',
+      'Wix Velo (formerly Corvid) development',
+      'E-commerce store setup with Wix Stores',
+      'Advanced animations and interactions',
+      'SEO optimization and marketing integrations',
+      'Mobile optimization and responsive design'
+    ],
+  },
 ];
 
 export const projects: Project[] = [
@@ -115,6 +157,39 @@ export const projects: Project[] = [
     link: "https://boxprotraining.co.uk",
     tags: ["Mobile App Development", "Health & Fitness", "UI/UX Design"],
     status: "in-development",
+  },
+  {
+    id: "6",
+    name: "TechCorp WordPress Site",
+    description:
+      "A comprehensive corporate website built with WordPress featuring advanced customizations and performance optimizations.",
+    longDescription:
+      "TechCorp WordPress Site is a sophisticated corporate website that showcases our expertise in WordPress development. Built with custom themes and advanced functionality, the site features a responsive design, SEO optimization, and seamless content management. The project includes custom post types, advanced custom fields, multilingual support, and integration with third-party services. The site demonstrates our ability to create scalable WordPress solutions that meet enterprise-level requirements while maintaining ease of use for content editors.",
+    imageId: "service-wordpress",
+    link: "#",
+    tags: ["WordPress Development", "Corporate Website", "SEO"],
+  },
+  {
+    id: "7", 
+    name: "Fashion Store Shopify",
+    description:
+      "A high-converting e-commerce store built on Shopify with custom themes and advanced functionality.",
+    longDescription:
+      "Fashion Store Shopify is a premium e-commerce solution that demonstrates our Shopify development capabilities. The store features a custom responsive design, advanced product filtering, integrated inventory management, and seamless checkout experience. Built with performance in mind, the site includes page speed optimizations, mobile-first design, and conversion rate optimization features. The project showcases custom Shopify app integrations, payment gateway configurations, and advanced analytics setup for comprehensive e-commerce management.",
+    imageId: "service-shopify",
+    link: "#",
+    tags: ["Shopify Development", "E-commerce", "Fashion"],
+  },
+  {
+    id: "8",
+    name: "Creative Agency Wix Site", 
+    description:
+      "A stunning portfolio website built with Wix featuring advanced animations and custom functionality.",
+    longDescription:
+      "Creative Agency Wix Site showcases our ability to maximize the Wix platform's potential through professional design and advanced customizations. The site features custom animations, interactive galleries, client testimonial sections, and seamless contact forms. Built using Wix Velo for advanced functionality, the site includes custom databases, dynamic content, and third-party integrations. The project demonstrates how we can create professional, high-performing websites that stand out from standard template-based solutions.",
+    imageId: "service-wix",
+    link: "#",
+    tags: ["Wix Development", "Creative Agency", "Portfolio"],
   },
 ];
 
@@ -351,6 +426,39 @@ export const jobPostings: JobPosting[] = [
     ],
     postedDate: '2024-10-25',
     applicationDeadline: '2024-12-15'
+  },
+  {
+    id: '5',
+    title: 'WordPress Developer',
+    department: 'Engineering',
+    location: 'Remote / On-site',
+    type: 'full-time',
+    experience: 'Mid-level',
+    description: 'Join our team as a WordPress Developer and help us create exceptional WordPress websites and applications for our clients. You\'ll work on diverse projects ranging from simple business websites to complex e-commerce platforms and custom applications. We\'re looking for a developer who is passionate about WordPress, follows best practices, and stays updated with the latest trends in WordPress development. You\'ll collaborate with our design and development teams to deliver high-quality, scalable WordPress solutions that meet our clients\' unique requirements.',
+    requirements: [
+      '3+ years of professional WordPress development experience',
+      'Expert knowledge of PHP, MySQL, HTML5, CSS3, JavaScript, and jQuery',
+      'Experience with WordPress theme and plugin development from scratch',
+      'Strong understanding of WordPress hooks, actions, filters, and custom post types',
+      'Experience with WooCommerce development and customization',
+      'Knowledge of modern development tools (Git, Webpack, Gulp, etc.)',
+      'Understanding of WordPress security best practices and performance optimization',
+      'Experience with page builders (Elementor, Gutenberg, etc.) and ACF',
+      'Familiarity with REST API integration and headless WordPress architecture'
+    ],
+    responsibilities: [
+      'Develop custom WordPress themes and plugins according to client specifications',
+      'Customize existing themes and plugins to meet specific project requirements',
+      'Build and maintain WooCommerce e-commerce solutions with payment integrations',
+      'Optimize WordPress sites for performance, SEO, and mobile responsiveness',
+      'Implement security measures and follow WordPress coding standards',
+      'Collaborate with designers to translate mockups into pixel-perfect WordPress sites',
+      'Perform WordPress migrations, updates, and maintenance tasks',
+      'Troubleshoot and debug WordPress issues across different hosting environments',
+      'Create technical documentation and provide client training on WordPress usage'
+    ],
+    postedDate: '2024-11-01',
+    applicationDeadline: '2024-12-30'
   }
 ];
 

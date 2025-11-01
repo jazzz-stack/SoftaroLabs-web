@@ -27,7 +27,8 @@ import {
   Activity,
   Building2,
   BarChart3,
-  ExternalLink
+  ExternalLink,
+  Layout
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -36,6 +37,9 @@ const serviceIcons: { [key: string]: React.ReactNode } = {
   'Mobile App Development': <Smartphone className="h-8 w-8 text-primary" />,
   'UI/UX Design': <Brush className="h-8 w-8 text-primary" />,
   'Cloud Solutions': <Cloud className="h-8 w-8 text-primary" />,
+  'WordPress Development': <Globe className="h-8 w-8 text-primary" />,
+  'Shopify Development': <ShoppingCart className="h-8 w-8 text-primary" />,
+  'Wix Development': <Layout className="h-8 w-8 text-primary" />,
 };
 
 const serviceImages: { [key: string]: string } = {
@@ -43,6 +47,9 @@ const serviceImages: { [key: string]: string } = {
   'Mobile App Development': 'service-mobile-app-bg',
   'UI/UX Design': 'service-ui-ux-bg',
   'Cloud Solutions': 'service-cloud-solutions-bg',
+  'WordPress Development': 'service-wordpress',
+  'Shopify Development': 'service-shopify',
+  'Wix Development': 'service-wix',
 };
 
 const projectIcons: { [key: string]: React.ReactNode } = {
