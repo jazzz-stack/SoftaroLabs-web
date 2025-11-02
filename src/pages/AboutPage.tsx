@@ -345,7 +345,7 @@ export default function AboutPage() {
 
                   {/* Enhanced image section */}
                   <div className="relative pt-8 pb-4">
-                    <div className="relative mx-auto mb-6 w-36 h-36">
+                    <div className="relative mx-auto mb-6 w-36 h-20">
                       {/* Animated background ring */}
                       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 group-hover:rotate-180"></div>
 

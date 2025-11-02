@@ -21,13 +21,13 @@
     {
       "id": "team-member-2",
       "description": "Professional headshot of Anchal Yadav - Head of Engineering", 
-      "imageUrl": "/assets/image/team-member-2.jpeg",
+      "imageUrl": "/assets/image/team-member-2.png",
       "imageHint": "Anchal Yadav"
     },
     {
       "id": "team-member-3",
       "description": "Professional headshot of Kai Chen - Lead Product Designer",
-      "imageUrl": "/assets/image/team-member-3.png",
+      "imageUrl": "/assets/image/team-member-3.jpeg",
       "imageHint": "Kai Chen"
     },
     {
