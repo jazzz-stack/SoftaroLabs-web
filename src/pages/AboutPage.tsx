@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { teamMembers } from "@/lib/data";
 import {
@@ -26,6 +26,8 @@ import {
   Mail,
   Linkedin,
   Twitter,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -91,6 +93,26 @@ export default function AboutPage() {
   const heroImage = PlaceHolderImages.find(
     (img) => img.id === "hero-background"
   );
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -320, // Width of one card plus gap
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 320, // Width of one card plus gap
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -327,94 +349,115 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-12">
-            {teamMembers.map((member, index) => {
-              const memberImage = PlaceHolderImages.find(
-                (img) => img.id === member.imageId
-              );
-              
-              return (
-                <Card
-                  key={member.name}
-                  className="group relative text-center overflow-hidden border-none bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 hover:rotate-1 transform-gpu">
-                  {/* Enhanced gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+          {/* Horizontal Scrollable Team Grid with Side Controls */}
+          <div className="relative flex items-center">
+            {/* Left Scroll Button */}
+            <div className="absolute left-0 z-30 -translate-x-6">
+              <button
+                onClick={scrollLeft}
+                className="group relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/90 backdrop-blur-md border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-white">
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Icon */}
+                <ChevronLeft className="relative z-10 h-5 w-5 text-gray-600 group-hover:text-primary transition-colors duration-300" />
+                
+                {/* Focus ring */}
+                <div className="absolute inset-0 rounded-xl ring-2 ring-primary/0 group-hover:ring-primary/20 transition-all duration-300"></div>
+              </button>
+            </div>
 
-                  {/* Animated border */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 transition-all duration-700 blur-sm"></div>
+            {/* Scrollable Container */}
+            <div 
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto gap-8 pb-4 px-12 snap-x snap-mandatory scrollbar-hide"
+              style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch'
+              }}>
+              {teamMembers.map((member, index) => {
+                const memberImage = PlaceHolderImages.find(
+                  (img) => img.id === member.imageId
+                );
+                
+                return (
+                  <Card
+                    key={member.name}
+                    className="group relative text-center overflow-hidden border-none bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 hover:rotate-1 transform-gpu flex-shrink-0 w-80 snap-center">
+                    {/* Enhanced gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
 
-                  {/* Enhanced image section */}
-                  <div className="relative pt-8 pb-4">
-                    <div className="relative mx-auto mb-6 w-36 h-20">
-                      {/* Animated background ring */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 group-hover:rotate-180"></div>
+                    {/* Animated border */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 transition-all duration-700 blur-sm"></div>
 
-                      {/* Main image */}
-                      <img
-                        src={memberImage?.imageUrl}
-                        alt={member.name}
-                        className="relative z-10 w-36 h-36 rounded-full border-4 border-white shadow-2xl object-cover mx-auto transition-all duration-700 group-hover:border-primary/50 group-hover:scale-105"
-                        onError={(e) => {
-                          e.currentTarget.src = `https://placehold.co/144x144/4f46e5/ffffff?text=${member.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}`;
-                        }}
-                      />
+                    {/* Enhanced image section */}
+                    <div className="relative pt-8 pb-4">
+                      <div className="relative mx-auto mb-6 w-36 h-20">
+                        {/* Animated background ring */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110 group-hover:rotate-180"></div>
 
-                      {/* Enhanced star badge */}
-                      <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 shadow-lg">
-                        <Star className="h-5 w-5 text-white fill-current" />
+                        {/* Main image */}
+                        <img
+                          src={memberImage?.imageUrl}
+                          alt={member.name}
+                          className="relative z-10 w-36 h-36 rounded-full border-4 border-white shadow-2xl object-cover mx-auto transition-all duration-700 group-hover:border-primary/50 group-hover:scale-105"
+                          onError={(e) => {
+                            e.currentTarget.src = `https://placehold.co/144x144/4f46e5/ffffff?text=${member.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}`;
+                          }}
+                        />
+
+                        {/* Enhanced star badge */}
+                        <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 shadow-lg">
+                          <Star className="h-5 w-5 text-white fill-current" />
+                        </div>
+
+                        {/* Floating particles effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-1000">
+                          <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                          <div className="absolute top-8 right-6 w-1 h-1 bg-secondary rounded-full animate-ping"></div>
+                          <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-primary rounded-full animate-bounce"></div>
+                        </div>
                       </div>
+                    </div>
 
-                      {/* Floating particles effect */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-1000">
-                        <div className="absolute top-4 left-4 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                        <div className="absolute top-8 right-6 w-1 h-1 bg-secondary rounded-full animate-ping"></div>
-                        <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-primary rounded-full animate-bounce"></div>
+                    <CardHeader className="relative z-10 pb-2 pt-0">
+                      <CardTitle>{member.name}</CardTitle>
+                      <Badge
+                        variant="secondary"
+                        className="mt-3 bg-gradient-to-r from-primary/10 to-secondary/10 group-hover:from-primary/20 group-hover:to-secondary/20 border-primary/20 transition-all duration-300">
+                        {member.role}
+                      </Badge>
+                    </CardHeader>
+
+                    <CardContent className="relative z-10 px-6 pb-8">
+                      <div className="text-sm leading-relaxed mb-6 group-hover:text-foreground/80 transition-colors duration-300">
+                        <CardDescription>{member.bio}</CardDescription>
                       </div>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
 
-                  <CardHeader className="relative z-10 pb-2 pt-0">
-                    <CardTitle>{member.name}</CardTitle>
-                    <Badge
-                      variant="secondary"
-                      className="mt-3 bg-gradient-to-r from-primary/10 to-secondary/10 group-hover:from-primary/20 group-hover:to-secondary/20 border-primary/20 transition-all duration-300">
-                      {member.role}
-                    </Badge>
-                  </CardHeader>
-
-                  <CardContent className="relative z-10 px-6 pb-8">
-                    <div className="text-sm leading-relaxed mb-6 group-hover:text-foreground/80 transition-colors duration-300">
-                      <CardDescription>{member.bio}</CardDescription>
-                    </div>
-
-                    {/* Enhanced social buttons */}
-                    <div className="flex justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="w-10 h-10 p-0 rounded-full bg-primary/10 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
-                        <Mail className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="w-10 h-10 p-0 rounded-full bg-secondary/10 hover:bg-secondary hover:text-white transition-all duration-300 hover:scale-110">
-                        <Linkedin className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="w-10 h-10 p-0 rounded-full bg-primary/10 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
-                        <Twitter className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+            {/* Right Scroll Button */}
+            <div className="absolute right-0 z-30 translate-x-6">
+              <button
+                onClick={scrollRight}
+                className="group relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/90 backdrop-blur-md border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-white">
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Icon */}
+                <ChevronRight className="relative z-10 h-5 w-5 text-gray-600 group-hover:text-primary transition-colors duration-300" />
+                
+                {/* Focus ring */}
+                <div className="absolute inset-0 rounded-xl ring-2 ring-primary/0 group-hover:ring-primary/20 transition-all duration-300"></div>
+              </button>
+            </div>
           </div>
 
           {/* Call to action */}

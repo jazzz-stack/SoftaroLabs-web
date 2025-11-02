@@ -26,15 +26,21 @@
     },
     {
       "id": "team-member-3",
-      "description": "Professional headshot of Kai Chen - Lead Product Designer",
-      "imageUrl": "/assets/image/team-member-3.jpeg",
-      "imageHint": "Kai Chen"
+      "description": "Professional headshot of Anchal - Lead Product Designer",
+      "imageUrl": "/assets/image/team-member-3.png",
+      "imageHint": "Anchal"
     },
     {
       "id": "team-member-4", 
-      "description": "Professional headshot of Marcus Thorne - Principal DevOps Engineer",
+      "description": "Professional headshot of Abhishek - Principal DevOps Engineer",
       "imageUrl": "/assets/image/team-member-4.png",
-      "imageHint": "Marcus Thorne"
+      "imageHint": "Abhishek"
+    },
+    {
+      "id": "team-member-5",
+      "description": "Professional headshot of Anubhav - Web Development Specialist",
+      "imageUrl": "/assets/image/team-member-5.png",
+      "imageHint": "Anubhav"
     },
     {
       "id": "service-web-dev",

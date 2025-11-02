@@ -242,24 +242,31 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: '2',
-    name: 'Akshita Yadav',
+    name: 'Akshita',
     role: 'Head of Engineering',
     bio: 'Akshita is a seasoned software architect who ensures that every project we deliver is built on a solid foundation. She is an expert in cloud-native technologies and distributed systems, and she loves mentoring junior developers.',
     imageId: 'team-member-2',
   },
   {
     id: '3',
-    name: 'Anchal Yadav',
+    name: 'Anchal',
     role: 'Lead Product Designer',
     bio: 'Anchal has a keen eye for detail and a deep understanding of user psychology. She leads our design team in creating interfaces that are not only beautiful but also intuitive and accessible. Anchal believes that great design can change the world.',
     imageId: 'team-member-3',
   },
   {
     id: '4',
-    name: 'Anubhav Anand',
+    name: 'Abhishek',
     role: 'Principal DevOps Engineer',
-    bio: 'Anubhav is the mastermind behind our scalable and resilient infrastructure. He specializes in automation, CI/CD, and cloud security, ensuring that our clients\' applications run smoothly and securely 24/7.',
+    bio: 'Abhishek is the mastermind behind our scalable and resilient infrastructure. He specializes in automation, CI/CD, and cloud security, ensuring that our clients\' applications run smoothly and securely 24/7.',
     imageId: 'team-member-4',
+  },
+  {
+    id: '5',
+    name: 'Anubhav',
+    role: 'Web Development Specialist',
+    bio: 'Anubhav specializes in modern web development technologies including WordPress, Wix, Shopify, and React. He creates dynamic, responsive websites and e-commerce solutions while managing SEO strategies to maximize online visibility and search rankings.',
+    imageId: 'team-member-5',
   },
 ];
 
