@@ -64,7 +64,7 @@ export function Header() {
         className="mb-8 flex items-center space-x-2"
         onClick={() => setMobileOpen(false)}>
         <img
-          src="/assets/image/logo.png"
+          src="/assets/image/trans-zoom-logo.png"
           alt="Softaro Labs Logo"
           className="h-6 w-6"
         />
@@ -121,7 +121,7 @@ export function Header() {
         <div className="mr-4 hidden md:flex">
           <Link to="/" className="ml-8  flex items-center pr-4 space-x-2">
             <img
-              src="/assets/image/logo.png"
+              src="/assets/image/trans-zoom-logo.png"
               alt="Softaro Labs Logo"
               className="h-6 w-6"
             />

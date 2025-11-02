@@ -235,16 +235,16 @@ export const blogPosts: BlogPost[] = [
 export const teamMembers: TeamMember[] = [
   {
     id: '1',
-    name: 'Dr. Evelyn Reed',
+    name: 'Jasvant Raj',
     role: 'Founder & CEO',
-    bio: 'With a PhD in Computer Science and over 15 years of industry experience, Evelyn founded Softaro Labs to create a company that values innovation, quality, and collaboration. She leads the team with a passion for solving complex problems with elegant solutions.',
+    bio: 'With a PhD in Computer Science and over 6 years of industry experience, Jasvant founded Softaro Labs to create a company that values innovation, quality, and collaboration. He leads the team with a passion for solving complex problems with elegant solutions.',
     imageId: 'team-member-1',
   },
   {
     id: '2',
-    name: 'Benjamin Carter',
+    name: 'Anchal Yadav',
     role: 'Head of Engineering',
-    bio: 'Ben is a seasoned software architect who ensures that every project we deliver is built on a solid foundation. He is an expert in cloud-native technologies and distributed systems, and he loves mentoring junior developers.',
+    bio: 'Anchal is a seasoned software architect who ensures that every project we deliver is built on a solid foundation. She is an expert in cloud-native technologies and distributed systems, and she loves mentoring junior developers.',
     imageId: 'team-member-2',
   },
   {

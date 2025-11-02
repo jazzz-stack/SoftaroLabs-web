@@ -144,7 +144,7 @@ export default function HomePage() {
       />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex pt-10 justify-center overflow-hidden">
         {heroImage && (
           <img
             src={heroImage.imageUrl}
@@ -162,7 +162,7 @@ export default function HomePage() {
             Now Accepting New Projects
           </Badge>
 
-          <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+          <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Transforming
             <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
               {" "}

@@ -9,7 +9,7 @@ export function Footer() {
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center space-x-2">
               <img
-                src="/assets/image/logo.png"
+                src="/assets/image/trans-main-zoom-logo.png"
                 alt="Softaro Labs Logo"
                 className="h-6 w-6"
               />

@@ -112,7 +112,7 @@ export default function AboutPage() {
             <Users className="mr-2 h-4 w-4" />
             Meet Our Team
           </Badge>
-
+{/* Builder like Elementor, Avada, WP Bakery, Bold Builder, Gutenberg */}
           <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6 leading-tight">
             About
             <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
@@ -351,14 +351,10 @@ export default function AboutPage() {
 
                       {/* Main image */}
                       <img
-                        src={ memberImage?.imageUrl}
+                        src={memberImage?.imageUrl}
                         alt={member.name}
                         className="relative z-10 w-36 h-36 rounded-full border-4 border-white shadow-2xl object-cover mx-auto transition-all duration-700 group-hover:border-primary/50 group-hover:scale-105"
-                        onLoad={() =>
-                          console.log(`✅ Image loaded: ${member.name}`)
-                        }
                         onError={(e) => {
-                          console.error(`❌ Image failed: ${member.name}`);
                           e.currentTarget.src = `https://placehold.co/144x144/4f46e5/ffffff?text=${member.name
                             .split(" ")
                             .map((n) => n[0])
