@@ -488,7 +488,7 @@ export default function PortfolioPage() {
                 Discuss Your Project <MessageSquare className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Link to="/portfolio">
+            <Link to="/services">
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-rose-500 via-pink-500 to-fuchsia-600 text-white border-2 border-transparent hover:from-rose-600 hover:via-pink-600 hover:to-fuchsia-700 hover:shadow-lg shadow-md transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6 font-semibold">

@@ -471,6 +471,25 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-2">Join Our Team</h3>
                 <p className="text-muted-foreground mb-6">Want to be part of our amazing team? We're always looking for talented individuals.</p>
+                
+                {/* LinkedIn Company Badge */}
+                <div className="mb-6 flex justify-center">
+                  <div 
+                    className="badge-base LI-profile-badge" 
+                    data-locale="en_US" 
+                    data-size="large" 
+                    data-theme="light" 
+                    data-type="HORIZONTAL" 
+                    data-vanity="softaro-labs-498012391" 
+                    data-version="v1">
+                    <a 
+                      className="badge-base__link LI-simple-link" 
+                      href="https://in.linkedin.com/in/softaro-labs-498012391?trk=profile-badge">
+                      Softaro Labs
+                    </a>
+                  </div>
+                </div>
+                
                 <Link to="/contact">
                   <Button
                     size="lg"

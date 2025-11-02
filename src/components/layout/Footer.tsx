@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-200 cursor-pointer">
               <img
                 src="/assets/image/trans-main-zoom-logo.png"
                 alt="Softaro Labs Logo"
@@ -21,15 +21,15 @@ export function Footer() {
               Building the future of software, one line of code at a time.
             </p>
             <div className="mt-4 flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary">
+              <a href="https://twitter.com/softarolabs" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary">
+              <a href="https://github.com/softarolabs" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">Github</span>
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary">
+              <a href="https://in.linkedin.com/in/softaro-labs-498012391" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </a>

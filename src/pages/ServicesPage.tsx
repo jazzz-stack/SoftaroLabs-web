@@ -378,19 +378,6 @@ export default function ServicesPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
-              {/* <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
-                <MessageSquare className="mr-2 h-5 w-5" />
-                Request Free Quote
-              </Button>
-            </Link>
-            <Link to="/about">
-              <Button
-                size="lg"
-                className="bg-white text-primary border-2 border-white hover:bg-gray-100 hover:shadow-lg text-lg px-8 py-6 font-semibold">
-                Learn About Our Team
-              </Button> */}
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg px-8 py-6">
