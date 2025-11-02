@@ -6,7 +6,7 @@ import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import GoogleAnalytics from './components/GoogleAnalytics'
-
+import { SpeedInsights } from "@vercel/speed-insights/react";
 // Import pages
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
@@ -30,11 +30,12 @@ function App() {
       <CorporateThemeProvider>
         <Router>
           <ScrollToTop />
-          <GoogleAnalytics 
+          <GoogleAnalytics
             measurementId={GA_MEASUREMENT_ID}
             searchConsoleCode={SEARCH_CONSOLE_CODE}
             bingVerificationCode={BING_VERIFICATION_CODE}
           />
+          <SpeedInsights />
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-grow">
@@ -45,7 +46,10 @@ function App() {
                 <Route path="/portfolio" element={<PortfolioPage />} />
                 <Route path="/project/:id" element={<ProjectDetailPage />} />
                 <Route path="/careers" element={<CareersPage />} />
-                <Route path="/careers/apply/:jobId" element={<JobApplicationPage />} />
+                <Route
+                  path="/careers/apply/:jobId"
+                  element={<JobApplicationPage />}
+                />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
                 <Route path="/contact" element={<ContactPage />} />
@@ -56,7 +60,7 @@ function App() {
         </Router>
       </CorporateThemeProvider>
     </HelmetProvider>
-  )
+  );
 }
 
 export default App
