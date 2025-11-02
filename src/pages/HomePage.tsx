@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -28,9 +28,63 @@ import {
   Building2,
   BarChart3,
   ExternalLink,
-  Layout
+  Layout,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+const serviceDescriptionConfig: { [key: string]: { icon: React.ReactNode; gradientFrom: string; gradientTo: string; borderColor: string; iconColor: string } } = {
+  'Mobile App Development': {
+    icon: <Smartphone className="h-4 w-4" />,
+    gradientFrom: 'from-primary/10',
+    gradientTo: 'to-purple-500/10',
+    borderColor: 'border-primary/20',
+    iconColor: 'text-primary'
+  },
+  'UI/UX Design': {
+    icon: <Brush className="h-4 w-4" />,
+    gradientFrom: 'from-purple-500/10',
+    gradientTo: 'to-pink-500/10',
+    borderColor: 'border-purple-500/20',
+    iconColor: 'text-purple-600'
+  },
+  'Web Development': {
+    icon: <Code className="h-4 w-4" />,
+    gradientFrom: 'from-blue-500/10',
+    gradientTo: 'to-cyan-500/10',
+    borderColor: 'border-blue-500/20',
+    iconColor: 'text-blue-600'
+  },
+  'Cloud Solutions': {
+    icon: <Cloud className="h-4 w-4" />,
+    gradientFrom: 'from-cyan-500/10',
+    gradientTo: 'to-teal-500/10',
+    borderColor: 'border-cyan-500/20',
+    iconColor: 'text-cyan-600'
+  },
+  'WordPress Development': {
+    icon: <Globe className="h-4 w-4" />,
+    gradientFrom: 'from-green-500/10',
+    gradientTo: 'to-emerald-500/10',
+    borderColor: 'border-green-500/20',
+    iconColor: 'text-green-600'
+  },
+  'Shopify Development': {
+    icon: <ShoppingCart className="h-4 w-4" />,
+    gradientFrom: 'from-orange-500/10',
+    gradientTo: 'to-red-500/10',
+    borderColor: 'border-orange-500/20',
+    iconColor: 'text-orange-600'
+  },
+  'Wix Development': {
+    icon: <Layout className="h-4 w-4" />,
+    gradientFrom: 'from-indigo-500/10',
+    gradientTo: 'to-purple-500/10',
+    borderColor: 'border-indigo-500/20',
+    iconColor: 'text-indigo-600'
+  }
+};
 
 const serviceIcons: { [key: string]: React.ReactNode } = {
   'Web Development': <Code className="h-8 w-8 text-primary" />,
@@ -60,7 +114,7 @@ const projectIcons: { [key: string]: React.ReactNode } = {
 };
 
 const stats = [
-  { icon: <Users className="h-8 w-8" />, value: '50+', label: 'Happy Clients' },
+  { icon: <Users className="h-8 w-8" />, value: '80+', label: 'Happy Clients' },
   { icon: <Trophy className="h-8 w-8" />, value: '100+', label: 'Projects Delivered' },
   { icon: <Star className="h-8 w-8" />, value: '5.0', label: 'Client Rating' },
   { icon: <Globe className="h-8 w-8" />, value: '15+', label: 'Countries Served' },
@@ -68,22 +122,34 @@ const stats = [
 
 const features = [
   { 
-    icon: <Zap className="h-12 w-12 text-primary" />, 
+    icon: <Zap className="h-16 w-16 text-white" />, 
     title: 'Lightning Fast', 
     description: 'Optimized performance with cutting-edge technologies for blazing-fast applications.',
-    imageId: 'feature-performance'
+    imageId: 'feature-performance',
+    additionalIcons: [
+      { icon: <Activity className="h-5 w-5" />, label: 'High Performance' },
+      { icon: <TrendingUp className="h-5 w-5" />, label: 'Speed Optimized' }
+    ]
   },
   { 
-    icon: <Shield className="h-12 w-12 text-primary" />, 
+    icon: <Shield className="h-16 w-16 text-white" />, 
     title: 'Secure & Reliable', 
     description: 'Enterprise-grade security and 99.9% uptime guarantee for your peace of mind.',
-    imageId: 'feature-security'
+    imageId: 'feature-security',
+    additionalIcons: [
+      { icon: <CheckCircle className="h-5 w-5" />, label: '99.9% Uptime' },
+      { icon: <Eye className="h-5 w-5" />, label: 'Monitoring' }
+    ]
   },
   { 
-    icon: <Rocket className="h-12 w-12 text-primary" />, 
+    icon: <Rocket className="h-16 w-16 text-white" />, 
     title: 'Scalable Solutions', 
     description: 'Built to grow with your business, from startup to enterprise scale.',
-    imageId: 'feature-scalability'
+    imageId: 'feature-scalability',
+    additionalIcons: [
+      { icon: <Building2 className="h-5 w-5" />, label: 'Enterprise Ready' },
+      { icon: <Globe className="h-5 w-5" />, label: 'Global Scale' }
+    ]
   },
 ];
 
@@ -110,6 +176,38 @@ const testimonials = [
 
 export default function HomePage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
+
+  // State for managing expanded features for each service
+  const [expandedServices, setExpandedServices] = useState<{ [key: string]: boolean }>({});
+
+  const toggleServiceFeatures = (serviceTitle: string) => {
+    setExpandedServices(prev => ({
+      ...prev,
+      [serviceTitle]: !prev[serviceTitle]
+    }));
+  };
+
+  // Component for service description with dynamic icon and styling
+  const ServiceDescription = ({ service }: { service: any }) => {
+    const config = serviceDescriptionConfig[service.title];
+    
+    if (!config) {
+      return <p className="text-base flex-1">{service.description}</p>;
+    }
+
+    return (
+      <div className="flex items-start gap-3 text-left">
+        <div className="flex-shrink-0 mt-1">
+          <div className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${config.gradientFrom} ${config.gradientTo} border ${config.borderColor} group-hover:from-primary/20 group-hover:to-purple-500/20 group-hover:scale-110 transition-all duration-300`}>
+            {React.cloneElement(config.icon as React.ReactElement, {
+              className: `h-4 w-4 ${config.iconColor}`
+            })}
+          </div>
+        </div>
+        <p className="text-base flex-1">{service.description}</p>
+      </div>
+    );
+  };
 
   // Combined structured data for homepage
   const combinedSchema = {
@@ -211,7 +309,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50/30 relative overflow-hidden">
+      <section className="py-4 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50/30 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-primary to-purple-600 rounded-full blur-3xl"></div>
@@ -222,21 +320,65 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
-            <Badge className="mb-6 bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border-primary/20 px-4 py-2">
+            <Badge className="mb-6 bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border-primary/20 px-6 py-3 text-sm font-medium">
               <Star className="mr-2 h-4 w-4" />
               Why Choose Us
             </Badge>
-            <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold mb-8 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 bg-clip-text text-transparent leading-tight">
-              Built for Performance & Scale
-            </h2>
-            <p className="text-lg md:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              We don't just build software; we engineer solutions that
-              <span className="font-semibold text-primary">
-                {" "}
-                propel your business forward
-              </span>{" "}
-              with cutting-edge technology and innovative design.
-            </p>
+            
+            {/* Enhanced Main Heading */}
+            <div className="relative mb-8">
+              <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold leading-tight relative">
+                <span className="bg-gradient-to-r from-slate-900 via-primary to-purple-600 bg-clip-text text-transparent">
+                  Built for
+                </span>
+                <br />
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Performance
+                  </span>
+                  <span className="text-slate-800 mx-4">&</span>
+                  <span className="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 bg-clip-text text-transparent">
+                    Scale
+                  </span>
+                  
+                  {/* Animated underline */}
+                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-purple-500 to-cyan-500 rounded-full opacity-80"></div>
+                  <div className="absolute -bottom-4 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full opacity-60"></div>
+                </span>
+              </h2>
+              
+              {/* Floating decorative elements */}
+              <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+              <div className="absolute -top-4 -right-8 w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full blur-lg animate-pulse delay-1000"></div>
+              <div className="absolute -bottom-8 left-1/3 w-20 h-20 bg-gradient-to-br from-pink-500/15 to-rose-500/15 rounded-full blur-2xl animate-pulse delay-500"></div>
+            </div>
+            
+            {/* Enhanced Description */}
+            <div className="max-w-4xl mx-auto">
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-6">
+                We don't just build software; we 
+                <span className="font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mx-2">
+                  engineer solutions
+                </span>
+                that propel your business forward with cutting-edge technology and innovative design.
+              </p>
+              
+              {/* Feature highlights */}
+              <div className="flex flex-wrap justify-center gap-4 mt-8">
+                <div className="flex items-center bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-primary/10">
+                  <Zap className="h-4 w-4 text-primary mr-2" />
+                  <span className="text-sm font-medium text-slate-700">Lightning Fast</span>
+                </div>
+                <div className="flex items-center bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-purple-500/10">
+                  <Shield className="h-4 w-4 text-purple-500 mr-2" />
+                  <span className="text-sm font-medium text-slate-700">Enterprise Security</span>
+                </div>
+                <div className="flex items-center bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border border-teal-500/10">
+                  <Rocket className="h-4 w-4 text-teal-500 mr-2" />
+                  <span className="text-sm font-medium text-slate-700">Infinite Scale</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
@@ -245,57 +387,97 @@ export default function HomePage() {
               return (
                 <Card
                   key={index}
-                  className="group relative overflow-hidden border-none shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 hover:scale-105">
-                  {/* Background Image */}
+                  className="group relative overflow-hidden border-none shadow-xl bg-white/90 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 hover:scale-105 cursor-pointer">
+                  
+                  {/* Simplified Background Image */}
                   {featureImage && (
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
                       <img
                         src={featureImage.imageUrl}
                         alt={featureImage.description}
                         data-ai-hint={featureImage.imageHint}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-purple-500/40"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-purple-500/40"></div>
                     </div>
                   )}
                   
-                  {/* Card Background Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/50 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Single Background Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50/80 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                  {/* Animated Border */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-purple-500/20 to-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg blur-sm"></div>
+                  {/* Single Border Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-purple-500/30 to-cyan-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-xl blur-sm"></div>
 
-                  {/* Floating Elements */}
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
-                  <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"></div>
+                  {/* Reduced Floating Elements - Only 2 instead of 3 */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary/15 to-purple-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
+                  <div className="absolute -bottom-4 -left-4 w-28 h-28 bg-gradient-to-br from-cyan-500/10 to-teal-500/15 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-800 blur-2xl"></div>
 
-                  <CardHeader className="text-center pb-6 relative z-10">
-                    <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent group-hover:from-primary/20 group-hover:via-primary/15 group-hover:to-primary/5 group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-2xl">
-                      <div className="p-2 rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-white group-hover:from-primary group-hover:to-purple-600 transition-all duration-500">
-                        {React.cloneElement(feature.icon as React.ReactElement, {
-                          className: "h-8 w-8",
-                        })}
+                  <CardHeader className="text-center pb-6 relative z-10 pt-6">
+                    {/* Enhanced Icon Container */}
+                    <div className="mx-auto mb-6 relative">
+                      {/* Enhanced Glow Ring */}
+                      <div className="absolute inset-0 w-32 h-32 bg-gradient-to-r from-primary/30 via-purple-500/30 to-cyan-500/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Main Icon Container */}
+                      <div className="relative flex h-28 w-28 mx-auto items-center justify-center rounded-full bg-gradient-to-br from-slate-100/90 via-white/95 to-primary/15 group-hover:from-primary/10 group-hover:via-purple-50/95 group-hover:to-cyan-50/90 group-hover:scale-110 transition-all duration-500 shadow-2xl border-2 border-white/60 group-hover:border-primary/20">
+                        
+                        {/* Icon Background Circle */}
+                        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary via-purple-500 to-cyan-500 text-white group-hover:from-cyan-500 group-hover:via-primary group-hover:to-purple-500 transition-all duration-500 shadow-xl group-hover:shadow-2xl">
+                          {/* Dynamic Icon Rendering */}
+                          {React.cloneElement(feature.icon as React.ReactElement, {
+                            className: "h-12 w-12 transition-transform duration-300 group-hover:scale-110 drop-shadow-lg",
+                          })}
+                        </div>
+                        
+                        {/* Icon Accent Ring */}
+                        <div className="absolute inset-2 rounded-full border-2 border-white/30 group-hover:border-white/50 transition-colors duration-300"></div>
                       </div>
                     </div>
-                    <div className="text-2xl font-bold group-hover:text-primary transition-colors duration-300">
-                      <CardTitle variant="h4">{feature.title}</CardTitle>
+                    
+                    {/* Simplified Title */}
+                    <div className="relative">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                        {feature.title}
+                      </h3>
+                      
+                      {/* Simple Underline */}
+                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 group-hover:w-1/2 h-0.5 bg-primary transition-all duration-500 rounded-full"></div>
                     </div>
                   </CardHeader>
+
                   <CardContent className="text-center relative z-10 px-6 pb-8">
-                    <div className="text-base leading-relaxed text-slate-600 group-hover:text-slate-700 transition-colors duration-300">
-                      <CardDescription>{feature.description}</CardDescription>
+                    {/* Enhanced Description with Icons */}
+                    <div className="text-base leading-relaxed text-slate-600 group-hover:text-slate-700 transition-colors duration-300 mb-6">
+                      <p>{feature.description}</p>
                     </div>
 
-                    {/* Progress Bar Animation */}
-                    <div className="mt-6 w-full bg-slate-200 rounded-full h-1 overflow-hidden">
-                      <div
-                        className={`h-full bg-gradient-to-r from-primary to-purple-500 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 delay-${
-                          index * 200
-                        }`}></div>
+                    {/* Feature Icons Row */}
+                    <div className="flex justify-center gap-6 mb-6">
+                      {feature.additionalIcons?.map((item, idx) => (
+                        <div key={idx} className="flex flex-col items-center group/icon">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-purple-500/10 group-hover:from-primary/20 group-hover:to-purple-500/20 group/icon:scale-110 transition-all duration-300 mb-2 shadow-lg">
+                            <div className="text-primary group-hover:text-purple-600 transition-colors duration-300">
+                              {item.icon}
+                            </div>
+                          </div>
+                          <span className="text-xs text-slate-500 group-hover:text-slate-600 font-medium transition-colors duration-300">
+                            {item.label}
+                          </span>
+                        </div>
+                      ))}
                     </div>
 
-                    {/* Feature Badge */}
-                    <Badge className="mt-4 bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    {/* Simple Progress Bar */}
+                    <div className="relative mb-4">
+                      <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                        <div
+                          className={`h-full bg-gradient-to-r from-primary to-purple-500 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 delay-${index * 100}`}
+                        ></div>
+                      </div>
+                    </div>
+
+                    {/* Simple Feature Badge */}
+                    <Badge className="bg-primary/10 text-primary border-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-400 transform translate-y-2 group-hover:translate-y-0">
                       Premium Feature
                     </Badge>
                   </CardContent>
@@ -323,16 +505,57 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge className="mb-4">Our Expertise</Badge>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6">
-              Complete Digital Solutions
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From concept to deployment, we handle every aspect of your digital
-              transformation.
+      <section className="pb-5 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50/30 relative overflow-hidden">
+        {/* Enhanced Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/5 via-purple-500/5 to-cyan-500/5"></div>
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-40 right-32 w-48 h-48 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-32 left-1/3 w-72 h-72 bg-gradient-to-br from-pink-500/15 to-violet-500/15 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute bottom-20 right-20 w-56 h-56 bg-gradient-to-br from-orange-500/15 to-red-500/15 rounded-full blur-2xl animate-pulse delay-300"></div>
+        </div>
+
+        {/* Subtle Grid Pattern Overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-20">
+            <Badge className="mb-6 bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border-primary/20 px-8 py-4 text-base font-semibold">
+              <Code className="mr-3 h-5 w-5" />
+              Our Expertise
+            </Badge>
+            
+            <div className="relative mb-8">
+              <h2 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold leading-tight relative">
+                <span className="bg-gradient-to-r from-slate-900 via-primary to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
+                  Complete Digital
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+                  Solutions
+                </span>
+                
+                {/* Enhanced Glow Effects */}
+                <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-primary/30 to-purple-500/30 rounded-full blur-2xl animate-pulse"></div>
+                <div className="absolute -top-4 -right-12 w-20 h-20 bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-full blur-xl animate-pulse delay-700"></div>
+                <div className="absolute -bottom-6 left-1/3 w-32 h-32 bg-gradient-to-br from-pink-500/20 to-violet-500/20 rounded-full blur-3xl animate-pulse delay-300"></div>
+              </h2>
+            </div>
+            
+            <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              From concept to deployment, we handle every aspect of your digital transformation with 
+              <span className="font-bold bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent mx-2">
+                cutting-edge technology
+              </span>
+              and innovative solutions.
             </p>
           </div>
 
@@ -340,95 +563,131 @@ export default function HomePage() {
             {services.slice(0, 4).map((service, index) => {
               const serviceImage = PlaceHolderImages.find((img) => img.id === serviceImages[service.title]);
               return (
-              <Card
-                key={service.title}
-                className="group relative overflow-hidden border-none bg-white/90 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-6 hover:scale-105">
-                {/* Background Image */}
-                {serviceImage && (
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
-                    <img
-                      src={serviceImage.imageUrl}
-                      alt={serviceImage.description}
-                      data-ai-hint={serviceImage.imageHint}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-purple-500/50"></div>
-                  </div>
-                )}
-                
-                {/* Background Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <Card
+                  key={service.title}
+                  className="group relative overflow-hidden border-none bg-white/90 backdrop-blur-sm hover:shadow-2xl transition-all duration-700 hover:-translate-y-8 hover:scale-105 shadow-xl h-full min-h-[400px] flex flex-col">
+                  {/* Enhanced Border Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg blur-sm"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg blur-md"></div>
 
-                {/* Animated Border Glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-purple-500/30 to-teal-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg blur-sm -z-10"></div>
-
-                {/* Floating Background Elements */}
-                <div className="absolute -top-3 -right-3 w-20 h-20 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
-                <div className="absolute -bottom-3 -left-3 w-24 h-24 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"></div>
-
-                <CardHeader className="text-center relative z-10 pb-4">
-                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent group-hover:from-primary/20 group-hover:via-primary/15 group-hover:to-primary/10 group-hover:scale-110 transition-all duration-500 shadow-lg group-hover:shadow-xl">
-                    <div className="p-3 rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-white group-hover:from-primary group-hover:to-purple-600 transition-all duration-500">
-                      {React.cloneElement(
-                        serviceIcons[service.title] as React.ReactElement,
-                        {
-                          className: "h-6 w-6",
-                        }
-                      )}
+                  {/* Dynamic Background Image */}
+                  {serviceImage && (
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
+                      <img
+                        src={serviceImage.imageUrl}
+                        alt={serviceImage.description}
+                        data-ai-hint={serviceImage.imageHint}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/60 to-purple-500/60"></div>
                     </div>
-                  </div>
-                  <div className="group-hover:text-primary transition-colors duration-300">
-                    <CardTitle variant="h5">{service.title}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="text-center relative z-10 px-6 pb-8">
-                  <div className="mb-6 text-slate-600 group-hover:text-slate-700 transition-colors duration-300">
-                    <CardDescription>{service.description}</CardDescription>
-                  </div>
+                  )}
 
-                  {/* Feature Tags */}
-                  <div className="flex flex-wrap gap-2 justify-center mb-4">
-                    {service.features.slice(0, 3).map((feature, idx) => (
-                      <Badge
-                        key={idx}
-                        className="text-xs bg-primary/10 text-primary border-primary/20 group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
-                        {feature.split(" ")[0]}
-                      </Badge>
-                    ))}
-                  </div>
+                  {/* Enhanced Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
 
-                  {/* Progress Bar */}
-                  <div className="w-full bg-slate-200 rounded-full h-1 overflow-hidden mb-4">
-                    <div
-                      className={`h-full bg-gradient-to-r from-primary to-purple-500 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 delay-${
-                        index * 150
-                      }`}></div>
-                  </div>
+                  {/* Animated Particles */}
+                  <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-primary/15 to-purple-500/15 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-2xl animate-spin-slow"></div>
+                  <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-gradient-to-br from-cyan-500/10 to-teal-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-900 blur-3xl"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-pink-500/8 to-violet-500/8 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl animate-pulse"></div>
 
-                  {/* Hover Badge */}
-                  <Badge className="bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                    Learn More
-                  </Badge>
-                </CardContent>
-              </Card>
+                  {/* Enhanced Progress Bar */}
+                  <div className="relative">
+                    <div className="w-full bg-slate-200/60 rounded-full h-2 overflow-hidden backdrop-blur-sm border border-slate-300/30">
+                      <div
+                        className={`h-full bg-gradient-to-r from-primary via-cyan-400 to-purple-500 rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 delay-${
+                          index * 150
+                        } shadow-lg shadow-primary/30`}></div>
+                    </div>
+                    {/* Progress Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-cyan-400/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+                  </div>
+                  <CardContent className="text-center relative z-10 px-6 pb-8 flex-grow flex flex-col h-full">
+                    {/* Enhanced Description - 20% height */}
+                    <div className="h-[20%] flex items-center justify-center">
+                      <ServiceDescription service={service} />
+                    </div>
+
+                    {/* Enhanced Feature Pills - 65% height */}
+                    <div className="h-[65%] flex flex-col justify-start">
+                      <div
+                        className={`flex flex-wrap gap-3 justify-center px-3 transition-all duration-500 h-full ${
+                          expandedServices[service.title]
+                            ? "overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent"
+                            : "overflow-hidden"
+                        }`}>
+                        {service.features.map((feature, idx) => (
+                          <div key={idx} className="relative">
+                            <Badge className="text-xs bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border border-primary/20 backdrop-blur-sm group-hover:from-primary/20 group-hover:to-purple-500/20 group-hover:scale-105 group-hover:text-primary transition-all duration-300 px-3 py-1">
+                              {feature}
+                            </Badge>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Action Buttons Row - 15% height */}
+                    <div className="h-[15%] flex items-center justify-center gap-3">
+                      {/* Show More/Less Button */}
+                      {service.features.length > 3 && (
+                        <button
+                          onClick={() => toggleServiceFeatures(service.title)}
+                          className="flex items-center text-xs font-medium text-white bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 border border-primary/30 rounded-full px-4 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group-hover:from-cyan-500 group-hover:to-teal-500">
+                          {expandedServices[service.title] ? (
+                            <>
+                              <span>Show Less</span>
+                              <ChevronUp className="h-3 w-3" />
+                            </>
+                          ) : (
+                            <>
+                              <span>
+                                Show More ({service.features.length - 3})
+                              </span>
+                              <ChevronDown className="h-3 w-3" />
+                            </>
+                          )}
+                        </button>
+                      )}
+
+                      {/* Explore Technology Button */}
+                      <button
+                        onClick={() => window.open("/services", "_self")}
+                        className="bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border border-primary/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 px-4 rounded-full hover:from-primary/20 hover:to-purple-500/20 hover:scale-105 cursor-pointer flex items-center gap-2">
+                        <ArrowRight className="h-4 w-4" />
+                        <span>Explore Technology</span>
+                      </button>
+                    </div>
+                  </CardContent>
+
+                  {/* Enhanced Scan Line Effect */}
+                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-scan transition-opacity duration-300"></div>
+                </Card>
               );
             })}
           </div>
 
-          <div className="text-center mt-12">
-            <Link to="/services">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 px-8 py-6">
-                Explore All Services <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+          {/* Enhanced CTA Button */}
+          <div className="text-center mt-16">
+            <div className="relative inline-block">
+              {/* Button Glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-lg blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+              
+              <Link to="/services">
+                <Button
+                  size="lg"
+                  className="relative bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 shadow-xl hover:shadow-emerald-500/20 transform hover:-translate-y-2 hover:scale-105 transition-all duration-300 px-10 py-6 text-lg font-semibold border border-emerald-400/20">
+                  <Globe className="mr-3 h-6 w-6" />
+                  Explore All Technologies
+                  <ArrowRight className="ml-3 h-6 w-6" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-20 bg-background">
+      <section className="py-4 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4">Our Work</Badge>
@@ -523,7 +782,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/20">
+      <section className="py-4 bg-gradient-to-br from-primary/5 to-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4">Client Success Stories</Badge>
@@ -570,7 +829,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary to-primary/80 text-white relative overflow-hidden">
+      <section className="py-4 bg-gradient-to-br from-primary to-primary/80 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge className="mb-6 bg-white/20 text-white border-white/30">

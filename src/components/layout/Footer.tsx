@@ -7,7 +7,11 @@ export function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
-            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-200 cursor-pointer">
+            <Link 
+              to="/" 
+              className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-200 cursor-pointer"
+              onClick={() => console.log('Footer logo clicked!')}
+            >
               <img
                 src="/assets/image/trans-main-zoom-logo.png"
                 alt="Softaro Labs Logo"
