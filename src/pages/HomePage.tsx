@@ -632,7 +632,8 @@ export default function HomePage() {
                       {service.features.length > 3 && (
                         <button
                           onClick={() => toggleServiceFeatures(service.title)}
-                          className="flex items-center text-xs font-medium text-white bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 border border-primary/30 rounded-full px-4 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group-hover:from-cyan-500 group-hover:to-teal-500">
+                          className="flex items-center font-medium text-white bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90 border border-primary/30 rounded-full px-4 backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group-hover:from-cyan-500 group-hover:to-teal-500"
+                          style={{ fontSize: '10px' }}>
                           {expandedServices[service.title] ? (
                             <>
                               <span>Show Less</span>
@@ -652,7 +653,8 @@ export default function HomePage() {
                       {/* Explore Technology Button */}
                       <button
                         onClick={() => window.open("/services", "_self")}
-                        className="bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border border-primary/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 px-4 rounded-full hover:from-primary/20 hover:to-purple-500/20 hover:scale-105 cursor-pointer flex items-center gap-2">
+                        className="bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary border border-primary/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 px-4 rounded-full hover:from-primary/20 hover:to-purple-500/20 hover:scale-105 cursor-pointer flex items-center gap-2"
+                        style={{ fontSize: '10px' }}>
                         <ArrowRight className="h-4 w-4" />
                         <span>Explore Technology</span>
                       </button>
